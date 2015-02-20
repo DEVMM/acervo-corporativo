@@ -1,0 +1,252 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+  font-family: "Flama-bold-italic";
+  src: url("type/flama-bolditalic-webfont.eot");
+  src: local("?"),
+    url("type/flama-bolditalic-webfont.woff") format("woff"),
+    url("type/flama-bolditalic-webfont.otf") format("opentype"),
+	url("type/flama-bolditalic-webfont.ttf") format("truetype"),
+    url("type/flama-bolditalic-webfont.svg#filename") format("svg");
+}
+@font-face {
+  font-family: "Flama-condensed-bold";
+  src: url("type/flamacondensed-bold-webfont.eot");
+  src: local("?"),
+    url("type/flamacondensed-bold-webfont.woff") format("woff"),
+    url("type/flamacondensed-bold-webfont.otf") format("opentype"),
+	url("type/flamacondensed-bold-webfont.ttf") format("truetype"),
+    url("type/flamacondensed-bold-webfont.svg#filename") format("svg");
+}
+@font-face {
+  font-family: "Flama-condensed-light";
+  src: url("type/flamacondensed-light-webfont.eot");
+  src: local("?"),
+    url("type/flamacondensed-light-webfont.woff") format("woff"),
+    url("type/flamacondensed-light-webfont.otf") format("opentype"),
+	url("type/flamacondensed-light-webfont.ttf") format("truetype"),
+    url("type/flamacondensed-light-webfont.svg#filename") format("svg");
+}
+@font-face {
+  font-family: "flamaextrabold-italic";
+  src: url("type/flama-extrabolditalic-webfont.eot");
+  src: local("?"),
+    url("type/flama-extrabolditalic-webfont.woff") format("woff"),
+    url("type/flama-extrabolditalic-webfont.otf") format("opentype"),
+	url("type/flama-extrabolditalic-webfont.ttf") format("truetype"),
+    url("type/flama-extrabolditalic-webfont.svg#filename") format("svg");
+}
+@font-face {
+  font-family: "Flama-medium-italic";
+  src: url("type/flamamedium-italic-webfont.eot");
+  src: local("?"),
+    url("type/flamamedium-italic-webfont.woff") format("woff"),
+    url("type/flamamedium-italic-webfont.otf") format("opentype"),
+	url("type/flamamedium-italic-webfont.ttf") format("truetype"),
+    url("type/flamamedium-italic-webfont.svg#filename") format("svg");
+}
+
+@font-face {
+  font-family: "flama-basic";
+  src: url("type/flama-basic-webfont.eot");
+  src: local("?"),
+    url("type/flama-basic-webfont.woff") format("woff"),
+    url("type/flama-basic-webfont.otf") format("opentype"),
+	url("type/flama-basic-webfont.ttf") format("truetype"),
+    url("type/flama-basic-webfont.svg#filename") format("svg");
+}
+
+@font-face {
+  font-family: "flama-basicitalic";
+  src: url("type/flama-basicitalic-webfont.eot");
+  src: local("?"),
+    url("type/flama-basicitalic-webfont.woff") format("woff"),
+    url("type/flama-basicitalic-webfont.otf") format("opentype"),
+	url("type/flama-basicitalic-webfont.ttf") format("truetype"),
+    url("type/flama-basicitalic-webfont.svg#filename") format("svg");
+}
+
+@font-face {
+  font-family: "flama-semibold";
+  src: url("type/flama-semibold-webfont.eot");
+  src: local("?"),
+    url("type/flama-semibold-webfont.woff") format("woff"),
+    url("type/flama-semibold-webfont.otf") format("opentype"),
+	url("type/flama-semibold-webfont.ttf") format("truetype"),
+    url("type/flama-semibold-webfont.svg#filename") format("svg");
+}
+
+@font-face {
+  font-family: "flama-semibold-italic";
+  src: url("type/flama-semibold-webfont.eot");
+  src: local("?"),
+    url("type/flama-semibolditalic-webfont.woff") format("woff"),
+    url("type/flama-semibolditalic-webfont.otf") format("opentype"),
+	url("type/flama-semibolditalic-webfont.ttf") format("truetype"),
+    url("type/flama-semibolditalic-webfont.svg#filename") format("svg");
+}
+
+@font-face {
+  font-family: "flama-medium";
+  src: url("type/flama-medium-webfont.eot");
+  src: local("?"),
+    url("type/flama-medium-webfont.woff") format("woff"),
+    url("type/flama-medium-webfont.otf") format("opentype"),
+  url("type/flama-medium-webfont.ttf") format("truetype"),
+    url("type/flama-medium-webfont.svg#filename") format("svg");
+}
+
+
+@font-face {
+  font-family: "flamamedium-italic";
+  src: url("type/flamamedium-italic-webfont.eot");
+  src: local("?"),
+    url("type/flamamedium-italic-webfont.woff") format("woff"),
+    url("type/flamamedium-italic-webfont.otf") format("opentype"),
+  url("type/flamamedium-italic-webfont.ttf") format("truetype"),
+    url("type/flamamedium-italic-webfont.svg#filename") format("svg");
+}
+
+
+body { font-family:Arial, Helvetica, sans-serif; background:#fff!important; }
+/*.content-cadastro { width:994px; margin:0 auto; border:1px solid #ddd; overflow:hidden;}*/
+.content-cadastro h2 { font-family: Flama-bold-italic, Arial, Helvetica, sans-serif; line-height: 16px; float:left; font-size: 25px; font-weight: normal; margin: 40px 0 40px 0px; text-transform: lowercase; color: #0076bc; padding-left: 30px; height: 26px;}
+.content-cadastro h2 span{ font-family: Arial, sans-serif; font-size: 20px; color: #a4a793;}
+
+.content-cadastro .cadastro-passos { display:inline; width: 950px; float:left; margin:0 0 40px 0; border-bottom: 6px solid #0076bc;}
+.content-cadastro .cadastro-passos li { display:block; float:left; font-family:flama-basic, Arial, Helvetica, sans-serif; font-size:15px; margin:5px 0; text-transform:uppercase; }
+.content-cadastro .cadastro-passos li strong { float:left; font-family:flama-medium, Arial, Helvetica, sans-serif; font-size:30px; border-right:1px solid #7e807a; padding-right:13px; }
+.content-cadastro .cadastro-passos li span { float:left; line-height:30px; padding: 0 25px 0 15px; font-family: flamamedium-italic, Arial, Helvetica, sans-serif; line-height: 36px; background: url("../images/next-active.png") right -44px no-repeat;}
+.content-cadastro .cadastro-passos li span:hover { background: url('../images/next-active.png') right 0 no-repeat; color: #0076bc; }
+.content-cadastro .cadastro-passos li label {margin: 0 auto; width: 35px; height: 10px; background: url("../images/pic-active.png") no-repeat; background: url("../images/pic-active.png") center no-repeat; position: absolute; margin: 33px 0 0 25px;}
+.bg-none {background:none!important;}
+.menu-active { background: url('../images/next-active.png') right 0 no-repeat; color: #0076bc; }
+
+.btn-cadastro { float:right; margin: 0 40px 0 0; clear: both;}
+
+.linkedin-btn {width: 37px; height: 37px; float: left; background: url("../images/social-media.jpg") -85px -2px; margin: 36px 0 0 5px;}
+.linkedin-btn:hover {background: url("../images/social-media.jpg") -85px -39px;}
+
+/* --------------  1º PASSO - DADOS PESSOAIS  -------------- */
+.column-left { float:left; padding-top:60px; position:relative; width:497px; }
+.form-perfil, .form-endereco, .form-profissional { /*border-right:1px solid #ccc; position:relative; background:url("../images/bg-box.jpg")*/ repeat-x; width: 50%; float: left; margin:0 0 60px 0;}
+.form-profissional { border:none; /*margin-left:30px;*/ }
+.form-perfil h3, .form-endereco h4, .form-profissional h5 { font-family: Flama-bold-italic, Arial, Helvetica, sans-serif; line-height: 16px; float:left; font-size:20px; font-weight:normal; margin:25px 0 40px 20px; text-transform:lowercase; color:#0076bc; /*background:url("../images/pic-title.jpg") 0 -3px no-repeat;*/ padding-left: 50px;  height: 26px;}
+.form-perfil a.btn-depois, .form-endereco a.btn-depois, .form-profissional a.btn-depois, .form-perfil a.btn-depois { background:#eff0e9 url("../images/next-black.png") 10px 8px no-repeat; border-radius:20px; color:#54554a; font-family:flamamedium-italic, Arial, Helvetica, sans-serif; font-size:12px; padding: 9px 17px 9px 38px; position:relative; text-transform:uppercase;margin: -10px 42px 0 0; float: right; }
+.form-perfil a.btn-depois:hover, .form-endereco a.btn-depois:hover, .form-profissional a.btn-depois:hover { background:#d7d8cc url("../images/next-black.png") 10px 8px no-repeat; }
+.btn-depois {cursor:pointer;}
+
+.column2 {float:left; background: url("../images/bg-box.jpg") 0 24px repeat-x;}
+
+.btn-cadastro a.btn-parar { float: left; background:#eff0e9 url("../images/next-black.png") 10px 8px no-repeat; color:#7e807a!important; font-family:flamamedium-italic, Arial, Helvetica; text-transform:uppercase; font-size:12px; border-radius:30px; margin-left:5px; padding: 9px 17px 9px 38px; }/*{ margin: -10px 0 0 0; background:#eff0e9; border-radius:20px; color:#54554a; font-family:flamamedium-italic, Arial, Helvetica, text-transform:uppercase; sans-serif; font-size:11px; padding:8px 17px; position:absolute; right:47px; top:0; }*/
+.btn-cadastro a.btn-parar:hover { background:#d7d8cc url("../images/next-black.png") 10px 8px no-repeat; }
+.btn-cadastro a.btn-prosseguir { float: left;background:#0462a0 url("../images/next-white.png") 10px 8px no-repeat; color:#fff!important; font-family:flamamedium-italic, Arial, Helvetica; text-transform:uppercase; font-size:12px; border-radius:30px; margin-left:5px; padding: 9px 17px 9px 38px;}
+.btn-cadastro a.btn-prosseguir:hover { background:#0078be url("../images/next-white.png") 10px 8px no-repeat;}
+
+
+.form-perfil .input-box, .form-endereco .input-box, .form-profissional .input-box { margin-bottom:10px; float:left; margin-right: -1px; display: initial; min-width:455px;}
+.form-perfil .input-box label, .form-endereco .input-box label, .form-profissional .input-box label  { display:block; float:left; padding:0 0 0 30px; font-family:Flama-bold-italic, Arial, Helvetica, sans-serif; font-size:15px; line-height:16px; text-align:right; text-transform:lowercase; width:94px; color:#0076bc;}
+.form-perfil .input-box input[type='text'],.input-box input[type='password'], .form-endereco .input-box input[type='text'], .form-profissional .input-box input[type='text'], .form-endereco .input-box select, .form-profissional .input-box select { background:#fff; border:1px solid #ccc; color:#7e807a; border-radius:30px; font-family:flama-basic, Arial, Helvetica, sans-serif; font-size:14px; margin-left:24px; padding: 8px 40px 8px 15px; text-transform:lowercase; width:250px; }
+.form-endereco .input-box select, .form-profissional .input-box select { color:#333; width:308px; background: url("../images/next-down.jpg") 265px 3px no-repeat; -webkit-appearance: none; -moz-appearance: none!important; appearance: none!important;}
+.form-endereco .input-box input.cep { width:144px; }
+.form-endereco a:link.btn-cep { color:#333; font-family:flamamedium-italic, Arial, Helvetica, sans-serif; font-size:10px; margin-left:20px; /*text-decoration:underline;*/ border-bottom:2px solid #e6e7df;text-transform:uppercase; }
+.form-profissional { background: url("../images/dotted-large.gif") 0px 60px no-repeat; }
+
+
+.column-right { float:right; padding-top:60px; position:relative; width:497px; }
+.form-social { height:328px; padding:142px 0 0 30px; float:left; background: url("../images/dotted-short.png") 0px 160px no-repeat; }
+.form-social p {  font-family:Arial, flama-semibold, Helvetica, sans-serif; font-size:14px; text-transform:lowercase; color:#333;}
+.form-social p span { font-size:16px; text-decoration:underline; font-weight:bold;}
+.form-social p.redes-sociais { background:#e6e7e1 url("../images/bg-social.jpg") right no-repeat; color:#333; font-size:12px; margin-top:38px; padding:12px 20px; width:190px; float:left;}
+
+
+/* --------------  2º PASSO - NEWSLETTERS  -------------- */ 
+.content-cadastro { margin:0 auto; overflow:hidden; padding:0 22px 130px 22px; border-left: 1px solid #e7e8df; border-right: 1px solid #e7e8df; position:relative; width:950px; background: url("../images/bg-box.jpg") 0 42px repeat-x; min-height: 900px}
+.cadastro-news h3 { border-bottom:2px solid #cdcdcd; font-family:flama-semibold, Arial, Helvetica, sans-serif; font-size:23px; font-weight:normal; padding-bottom:10px; text-transform:uppercase; }
+.descricao { /*border-bottom:6px solid #0076bc;*/ padding: 0 0 20px 0; width:870px; margin: 0 0 30px 0;}
+.descricao p, .news-mm .news-box p, .news-proxxima .news-box p, .news-anuarios .news-box p, .termos p, .app-mm .app-box p, .app-proxxima .app-box p, eventos-box p { font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:14px; /*padding-left:23px;*/ width:100%; color: #333;}
+.descricao p.title { font-family: Flama-bold-italic, Arial, Helvetica, sans-serif; line-height: 16px; float:left; font-size:20px; font-weight:normal; text-transform:lowercase; color:#0076bc; background:url("../images/pic-title.jpg") 0 -3px no-repeat; padding-left: 50px;  height: 26px; margin:0 0 30px 0; } 
+.news-mm, .news-proxxima, .news-anuarios, .app-mm, .app-proxxima, .eventos-mm { float: left; overflow: hidden; background: #f5f6f0; border: 6px solid #e7e8df; margin: 20px 20px 42px 0;}
+.news-anuarios { margin:0 0 0 65px; }
+.news-mm h4, .news-proxxima h5, .news-anuarios h6, .app-mm h4, .app-proxxima h5, .eventos-mm h4 { font-family: flamaextrabold-italic, Arial, Helvetica, sans-serif; font-size: 22px; font-weight: normal; margin: -34px 0 0 0; padding: 0; /*border-bottom: 6px solid #0076bc;*/ position: absolute; color: #0076bc; }
+.news-mm .news-box, .news-proxxima .news-box, .news-anuarios .news-box, .app-mm .app-box, .app-proxxima .app-box, .news-mm .news-box, .news-proxxima .news-box, .news-anuarios .news-box, .app-mm .app-box, .app-proxxima .app-box, .eventos-mm .eventos-box { border-left:1px dotted #bbb; color:#333; border-top:1px dotted #bbb; float:left; min-height: 200px; /*margin-right:10px;*/ padding:27px 24px; width:172px; }
+/*.news-mm .news-box p, .news-proxxima .news-box p, .news-anuarios .news-box p, .eventos-mm .eventos-box p { padding:0; width:auto; }*/
+.news-mm .news-box p strong, .news-proxxima .news-box p strong, .news-anuarios .news-box p strong, .eventos-mm .eventos-box p strong, .app-mm .app-box p strong, .app-proxxima .app-box p strong, .news-mm .news-box p strong, .news-proxxima .news-box p strong, .news-anuarios .news-box p strong, .eventos-mm .eventos-box p strong, .app-mm .app-box p strong, .app-proxxima .app-box p strong  { display:block; line-height:18px; font-family:flama-semibold-italic, Arial, Helvetica, sans-serif; color:#333; font-size:18px; font-weight:normal; margin-bottom:11px; }
+.news-mm .news-box a.btn-assinar, .news-proxxima .news-box a.btn-assinar, .news-anuarios .news-box a.btn-assinar, .app-mm .app-box a.btn-download, .app-proxxima .app-box a.btn-download, .eventos-mm .eventos-box a.btn-inscreva { float: left; margin:20px 0 0 0; background: #0462a0 url("../images/next-white.png") 10px 8px no-repeat; color: #fff!important; font-family: flamamedium-italic, Arial, Helvetica; text-transform: uppercase; font-size: 12px; border-radius: 30px; margin-left: 5px; padding: 9px 17px 9px 38px; }
+.news-mm .news-box a.btn-assinar:hover, .news-proxxima .news-box a.btn-assinar:hover, .news-anuarios .news-box a.btn-assinar:hover,  .app-mm .app-box a.btn-download:hover, .app-proxxima .app-box a.btn-download:hover, .eventos-mm .eventos-box a.btn-inscreva:hover {background: #0076bc url("../images/next-white.png") 10px 8px no-repeat;}
+span.assinado{ float: left; background: #F8244F; color:#FFF!important; font-family: flamamedium-italic, Arial, Helvetica; text-transform: uppercase; font-size: 12px; border-radius: 30px; margin: 20px 0 0 0; padding: 9px 17px; }
+.btn-assinado { color:#fff}
+.termos { float:left; margin-top:30px; width: 950px; background: url("../images/bg-box.jpg") 0 5px repeat-x; } 
+.termos p.title { border-bottom:6px solid #0076bc; color:#0076bc; font-family:flamaextrabold-italic, Arial, Helvetica, sans-serif; font-size:18px; margin-bottom:30px; padding:0 0 15px 23px; width:927px; }
+.termos .checkbox-termos { margin:40px 0 0 23px;}
+.termos .checkbox-termos .check-box { margin-bottom:5px; }
+.termos .checkbox-termos .check-box label { font-family:Arial, Helvetica, sans-serif; font-size:11px; text-transform:uppercase; color: #333; }
+
+
+/* --------------  3º PASSO - APLICATIVOS APP/ID  -------------- */ 
+
+.cadastro-aplicativos h3 { border-bottom:2px solid #cdcdcd; font-family:flama-semibold, Arial, Helvetica, sans-serif; font-size:23px; font-weight:normal; padding-bottom:10px; text-transform:uppercase; }
+/*.app-mm, .app-proxxima { float:left; margin:0 0 42px 23px; overflow:hidden; }*/
+/*.app-proxxima { margin:0 0 0 65px; }*/
+/*.app-mm h4, .app-proxxima h5 { font-family:flamaextrabold-italic, Arial, Helvetica, sans-serif; font-size:22px; font-weight:normal; margin:26px 0 20px 0; }*/
+/*.app-mm .app-box, .app-proxxima .app-box { border:1px solid #ccc; float:left; margin-right:10px; padding:27px 24px; width:129px; }*/
+/*.app-mm .app-box p, .app-proxxima .app-box p { font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:14px; }*/
+/*.app-mm .app-box p strong, .app-proxxima .app-box p strong { display:block; font-family:flama-semibold-italic, Arial, Helvetica, sans-serif; font-size:14px; font-weight:normal; margin-bottom:11px; }*/
+/*.app-mm .app-box a.btn-download, .app-proxxima .app-box a.btn-download { background:#4e4e4e; color:#fff; display:block; font-family:flamamedium-italic, Arial, Helvetica, sans-serif; font-size:12px; margin-top:20px; padding:8px 15px; text-transform:uppercase; width:80px; }*/
+
+
+/* --------------  4º PASSO - EVENTOS  -------------- */ 
+
+.cadastro-eventos h3 { border-bottom:2px solid #cdcdcd; font-family:flama-semibold, Arial, Helvetica, sans-serif; font-size:23px; font-weight:normal; padding-bottom:10px; text-transform:uppercase; }
+/*.eventos-mm { float:left; margin:0 0 42px 23px; overflow:hidden; }*/
+/*.eventos-mm h4 { font-family:flamaextrabold-italic, Arial, Helvetica, sans-serif; font-size:22px; font-weight:normal; margin:26px 0 20px 0; }*/
+/*.eventos-mm .eventos-box { border:1px solid #ccc; float:left; margin-right:10px; padding:27px 24px; width:129px; }*/
+/*.eventos-mm .eventos-box p { font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:14px; }*/
+/*.eventos-mm .eventos-box p strong { display:block; font-family:flama-semibold-italic, Arial, Helvetica, sans-serif; font-size:14px; font-weight:normal; margin-bottom:11px; }*/
+/*.eventos-mm .eventos-box a.btn-inscreva { background:#4e4e4e; color:#fff; display:block; font-family:flamamedium-italic, Arial, Helvetica, sans-serif; font-size:12px; margin-top:20px; padding:8px 15px; text-transform:uppercase; }*/
+
+
+/* --------------  5º PASSO - FINALIZAÇÃO CADASTRO  -------------- */
+.cadastro-finalizacao { float:left; padding:60px 22px 0 22px; position:relative; width:950px; }
+.cadastro-finalizacao h3 { border-bottom:2px solid #cdcdcd; font-family:flama-semibold, Arial, Helvetica, sans-serif; font-size:23px; font-weight:normal; padding-bottom:10px; text-transform:uppercase; }
+.cadastro-finalizacao .descricao { border:none; padding:32px 0; width:870px; }
+.cadastro-finalizacao .descricao p { font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:18px; padding-left:23px; width:730px; }
+.cadastro-finalizacao .descricao p.title { font-family:flama-basicitalic, Arial, Helvetica, sans-serif; font-size:17px; margin-bottom:20px; }
+.cadastro-finalizacao .descricao p.title span { font-family:flama-semibold-italic, Arial, Helvetica, sans-serif; }
+
+.bg-cadastro {overflow:hidden;}
+input[type="radio"]{margin-left: 25px; -webkit-appearance: none; -webkit-margin-end: 3px; -webkit-transition: border 500ms; border-radius: 100%; border: 1px solid #bbb; display: inline-block; height: 15px; margin-bottom: 0; position: relative; top: 3px; vertical-align: baseline; width: 15px;}
+input[type='radio']:checked::before { -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5); -webkit-margin-start: 4px; background: #808080; border-radius: 10px; content: ''; display: inline-block; font-size: 13px; font-weight: 400; height: 5px; left: 0; margin-top: 4px; opacity: 1; position: absolute; top: 0; vertical-align: top; width: 5px; }
+input-box span {font-size:14px;}
+.showbar {padding: 10px 0; width: 100%; text-align: center; background: #feb; color:#333;}
+.showbar p {padding: 10px; text-align: center; }  
+.content-cadastro .cadastro-passos li, .content-cadastro .cadastro-passos li a {color:#999;}
+.news-box p, .app-box p {height:45px;}
+#disable1, #disable3 { display:none}
+
+#resultado-email-login {
+	z-index: 999;
+font-family: arial;
+font-size: 13px;
+margin: 17px 0 0 0;
+color: red;
+width: 200px;
+height: 40px;
+display: block;
+position: absolute;
+top: 64px;
+left: 96px;
+display:none
+}
+
+#notification {color: red; margin: 5px 0 0 200px; font-size: 12px; font-style: italic; position: absolute; display: none; }
+
+.txtempty::-webkit-input-placeholder { color: red!important; }
+.txtempty:-moz-placeholder {  color: red!important; }
+.txtempty::-moz-placeholder { color: red!important; }
+.txtempty:-ms-input-placeholder { color: red!important; }
+
+
+/*Campo Cadastro Fechado */
+.txt-cfechado {font-size: 26px; font-family: arial; color:#7d8079; margin: 10px 0 0 20px; padding: 10px 0 15px 0; text-transform:uppercase;}

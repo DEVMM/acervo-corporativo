@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+ 
+    <annotation-driven />
+ 
+    <resources mapping="/resources/**" location="/resources/" />
+ 
+    <beans:bean
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="suffix" value=".jsp" />
+    </beans:bean>
+ 
+    <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url"
+            value="jdbc:mysql://localhost:3306/grupomm_corporativo" />
+        <beans:property name="username" value="root" />
+        <beans:property name="password" value="140819" />
+    </beans:bean>
+ 
+    <!-- Hibernate 4 SessionFactory Bean -->
+    <beans:bean id="hibernate4AnnotatedSessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="annotatedClasses">
+            <beans:list>
+                <beans:value>br.com.grupomm.dbm.entity.Pessoa</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.PessoaFisica</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.PessoaJuridica</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Endereco</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Email</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Telefone</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.AreaDeAtuacao</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.NivelHierarquico</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Porte</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.RamoDeAtividade</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Assinatura</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.TipoAssinatura</beans:value>
+            </beans:list>
+        </beans:property>
+        <beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.format_sql">false</beans:prop>
+				<beans:prop key="hibernate.use_sql_comments">false</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+			</beans:props>
+        </beans:property>
+    </beans:bean>
+     
+    <context:component-scan base-package="br.com.grupomm.dbm" />
+     
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+     
+    <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    
+    <!--  -->
+    	<beans:bean id="cadastroBO" class="br.com.grupomm.dbm.bo.CadastroBO"></beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="pessoaDAO" class="br.com.grupomm.dbm.dao.PessoaDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="pessoaService" class="br.com.grupomm.dbm.service.PessoaServiceImpl">
+        <beans:property name="pessoaDAO" ref="pessoaDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="pessoa" class="br.com.grupomm.dbm.entity.Pessoa">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="pessoaFisicaDAO" class="br.com.grupomm.dbm.dao.PessoaFisicaDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="pessoaFisicaService" class="br.com.grupomm.dbm.service.PessoaFisicaServiceImpl">
+        <beans:property name="pessoaFisicaDAO" ref="pessoaFisicaDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="pessoaFisica" class="br.com.grupomm.dbm.entity.PessoaFisica">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="pessoaJuridicaDAO" class="br.com.grupomm.dbm.dao.PessoaJuridicaDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="pessoaJuridicaService" class="br.com.grupomm.dbm.service.PessoaJuridicaServiceImpl">
+        <beans:property name="pessoaJuridicaDAO" ref="pessoaJuridicaDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="pessoaJuridica" class="br.com.grupomm.dbm.entity.PessoaJuridica">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="areaDeAtuacaoDAO" class="br.com.grupomm.dbm.dao.AreaDeAtuacaoDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="areaDeAtuacaoService" class="br.com.grupomm.dbm.service.AreaDeAtuacaoServiceImpl">
+        <beans:property name="areaDeAtuacaoDAO" ref="areaDeAtuacaoDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="areaDeAtuacao" class="br.com.grupomm.dbm.entity.AreaDeAtuacao">
+    </beans:bean>
+    <!--  -->
+    
+    
+    <!--  -->
+    <beans:bean id="assinaturaDAO" class="br.com.grupomm.dbm.dao.AssinaturaDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="assinaturaService" class="br.com.grupomm.dbm.service.AssinaturaServiceImpl">
+        <beans:property name="assinaturaDAO" ref="assinaturaDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="assinatura" class="br.com.grupomm.dbm.entity.Assinatura">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="emailDAO" class="br.com.grupomm.dbm.dao.EmailDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="emailService" class="br.com.grupomm.dbm.service.EmailServiceImpl">
+        <beans:property name="emailDAO" ref="emailDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="email" class="br.com.grupomm.dbm.entity.Email">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="enderecoDAO" class="br.com.grupomm.dbm.dao.EnderecoDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="enderecoService" class="br.com.grupomm.dbm.service.EnderecoServiceImpl">
+        <beans:property name="enderecoDAO" ref="enderecoDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="endereco" class="br.com.grupomm.dbm.entity.Endereco">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="nivelHierarquicoDAO" class="br.com.grupomm.dbm.dao.NivelHierarquicoDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="nivelHierarquicoService" class="br.com.grupomm.dbm.service.NivelHierarquicoServiceImpl">
+        <beans:property name="nivelHierarquicoDAO" ref="nivelHierarquicoDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="nivelHierarquico" class="br.com.grupomm.dbm.entity.NivelHierarquico">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="porteDAO" class="br.com.grupomm.dbm.dao.PorteDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="porteService" class="br.com.grupomm.dbm.service.PorteServiceImpl">
+        <beans:property name="porteDAO" ref="porteDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="porte" class="br.com.grupomm.dbm.entity.Porte">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="ramoDeAtividadeDAO" class="br.com.grupomm.dbm.dao.RamoDeAtividadeDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="ramoDeAtividadeService" class="br.com.grupomm.dbm.service.RamoDeAtividadeServiceImpl">
+        <beans:property name="ramoDeAtividadeDAO" ref="ramoDeAtividadeDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="ramoDeAtividade" class="br.com.grupomm.dbm.entity.RamoDeAtividade">
+    </beans:bean>
+    <!--  -->
+    
+ 	<!--  -->
+    <beans:bean id="telefoneDAO" class="br.com.grupomm.dbm.dao.TelefoneDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="telefoneService" class="br.com.grupomm.dbm.service.TelefoneServiceImpl">
+        <beans:property name="telefoneDAO" ref="telefoneDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="telefone" class="br.com.grupomm.dbm.entity.Telefone">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="tipoAssinaturaDAO" class="br.com.grupomm.dbm.dao.TipoAssinaturaDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="tipoAssinaturaService" class="br.com.grupomm.dbm.service.TipoAssinaturaServiceImpl">
+        <beans:property name="tipoAssinaturaDAO" ref="tipoAssinaturaDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="tipoAssinatura" class="br.com.grupomm.dbm.entity.TipoAssinatura">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
+    <beans:bean id="gerarCodigo" class="br.com.grupomm.dbm.utils.GerarCodigo">
+    </beans:bean>
+    <!--  -->
+</beans:beans>
