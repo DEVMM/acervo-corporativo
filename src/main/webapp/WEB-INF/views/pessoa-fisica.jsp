@@ -27,6 +27,8 @@
 			document.getElementById('estado').value = valor.uf
 			document.getElementById('pais').value = 'Brasil'
 		}
+		
+		
 	</script>
 </head>
 
@@ -38,14 +40,14 @@
 		</h1>
 			<div class="content-cadastro">
 				<!-- MENU TOPO DE NAVEGAÇÃO -->
-				<form action="/GrupoMMDBM/dbm/cadastrar-usuario/salvar" method="POST">
+				<form action="/GrupoMMDBM/dbm/cadastrar-usuario/salvar" name="cadastro" method="POST">
 					<div class="column">
 						<div class="form-perfil form-profissional">
 							<h3>
 							<strong class="icon-lado"></strong>Dados Perfil
 						</h3>
 							<div class="input-box">
-								<label style="padding-top: 10px">Nome</label>
+								<label style="padding-top: 10px">Nome pipi </label>
 								<input type="text" name="nome" maxlength="200" placeholder="Digite seu nome!" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
