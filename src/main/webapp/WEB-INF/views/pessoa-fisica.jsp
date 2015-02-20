@@ -28,6 +28,20 @@
 			document.getElementById('pais').value = 'Brasil'
 		}
 		
+		document.addEventListener("DOMContentLoaded", function() {
+		    var elements = document.getElementsByTagName("INPUT");
+		    for (var i = 0; i < elements.length; i++) {
+		        elements[i].oninvalid = function(e) {
+		            e.target.setCustomValidity("");
+		            if (!e.target.validity.valid) {
+		                e.target.setCustomValidity("Giovanni Pinto");
+		            }
+		        };
+		        elements[i].oninput = function(e) {
+		            e.target.setCustomValidity("");
+		        };
+		    }
+		})
 		
 	</script>
 </head>
@@ -48,7 +62,7 @@
 						</h3>
 							<div class="input-box">
 								<label style="padding-top: 10px">Nome pipi </label>
-								<input type="text" name="nome" maxlength="200" placeholder="Digite seu nome!" /> </div>
+								<input type="text" name="nome" maxlength="200" placeholder="Digite seu nome!" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label style="padding-top: 10px">Sobrenome</label>
