@@ -18,7 +18,7 @@ import br.com.grupomm.dbm.entity.RamoDeAtividade;
 import br.com.grupomm.dbm.entity.Telefone;
 
 public class CadastroBO extends AutowiredServices {
-	
+
 	public void salvarPessoa(Pessoa p) {
 		try {
 			this.pessoaService.salvar(p);
@@ -27,7 +27,7 @@ public class CadastroBO extends AutowiredServices {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void salvarPessoaFisica(PessoaFisica pF) {
 		try {
 			this.pessoaFisicaService.salvar(pF);
@@ -37,7 +37,7 @@ public class CadastroBO extends AutowiredServices {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void salvarPssoaJuridica(PessoaJuridica pJ) {
 		try {
 			this.pessoaJuridicaService.salvar(pJ);
@@ -46,7 +46,7 @@ public class CadastroBO extends AutowiredServices {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<NivelHierarquico> listarNivelHierarquico() {
 		try {
 			return this.nivelHierarquicoService.listarNivelHierarquico();
@@ -55,7 +55,7 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public List<AreaDeAtuacao> listarAreaDeAtuacao() {
 		try {
 			return this.areaDeAtuacaoService.listarAreaDeAtuacao();
@@ -64,7 +64,7 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public Pessoa getPessoaByCodigo(String codigo) {
 		try {
 			return this.pessoaService.getPessoaByCodigo(codigo);
@@ -73,7 +73,7 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public NivelHierarquico getNivelByID(int id) {
 		try {
 			return this.nivelHierarquicoService.NivelHierarquicoByID(id);
@@ -82,7 +82,7 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public AreaDeAtuacao getAreaByID(int id) {
 		try {
 			return this.areaDeAtuacaoService.AreaDeAtuacaoByID(id);
@@ -91,17 +91,17 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public void salvarTelefone(Telefone t) {
 		System.out.println(t);
 		try {
-				this.telefoneService.salvar(t);
+			this.telefoneService.salvar(t);
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Telefone getTelefoneByNumber(String numero) {
 		try {
 			return this.telefoneService.getTelefoneByNumber(numero);
@@ -110,16 +110,11 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
-	public Email getEmailByEndereco(Email e) {
-		try {
-			return this.emailService.getEmailByEndereco(e.getEmail());
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-			return null;
-		}
+
+	public Email getEmailByEndereco(String e) throws SQLException {
+		return this.emailService.getEmailByEndereco(e);
 	}
-	
+
 	public void salvarEmail(Email email) {
 		try {
 			this.emailService.salvar(email);
@@ -128,7 +123,7 @@ public class CadastroBO extends AutowiredServices {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void salvarEndereco(Endereco e) {
 		try {
 			this.enderecoService.salvar(e);
@@ -137,7 +132,7 @@ public class CadastroBO extends AutowiredServices {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	public Endereco getEnderecoByCepAndNumero(Endereco e) {
 		try {
 			return this.enderecoService.getEnderecoByCepAndNumero(e.getCep(), e.getNumero());
@@ -146,7 +141,7 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public void atualizarPessoa(Pessoa p) {
 		try {
 			this.pessoaService.atualizar(p);
@@ -155,7 +150,7 @@ public class CadastroBO extends AutowiredServices {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void excluirPessoa(Pessoa p) {
 		try {
 			this.pessoaService.excluir(p);
@@ -164,7 +159,7 @@ public class CadastroBO extends AutowiredServices {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Porte> listarPorte() {
 		try {
 			return this.porteService.listarPorte();
@@ -173,10 +168,40 @@ public class CadastroBO extends AutowiredServices {
 			return null;
 		}
 	}
-	
+
 	public List<RamoDeAtividade> listarRamoDeAtividade() {
 		try {
 			return this.ramoDeAtividadeService.listarRamoDeAtividade();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public PessoaFisica getPessoaFisicaByCPF(String cpf) throws Exception{
+		return this.pessoaFisicaService.getPessoaFisicaByCPF(cpf);
+	}
+	
+	public PessoaJuridica getPessoaJuridicaByCNPJ(String CNPJ) throws SQLException {
+		return this.pessoaJuridicaService.getPessoaJuridicaByCNPJ(CNPJ);
+	}
+	
+	public PessoaJuridica getPessoaJuridicaByInscricaoEstadual(String ie) throws SQLException {
+		return this.pessoaJuridicaService.getPessoaJuridicaByInscricaoEstadual(ie);
+	}
+	
+	public Porte getPorteById(Integer id) {
+		try {
+			return this.porteService.porteByID(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public RamoDeAtividade getRamoById(Integer id) {
+		try {
+			return this.ramoDeAtividadeService.RamoDeAtividadeByID(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

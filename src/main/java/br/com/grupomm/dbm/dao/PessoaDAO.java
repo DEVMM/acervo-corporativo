@@ -22,5 +22,5 @@ public class PessoaDAO extends AbstractDAO<Pessoa> {
 		Session session = this.sessionFactory.getCurrentSession();
 		return (Pessoa) session.createQuery("from Pessoa where codigo=:codigo").setParameter("codigo", codigo).uniqueResult();
 	}
-
+	
 }

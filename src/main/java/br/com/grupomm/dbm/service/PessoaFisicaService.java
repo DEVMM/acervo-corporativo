@@ -14,4 +14,5 @@ public interface PessoaFisicaService {
 	public void atualizar(PessoaFisica pF) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
 	public void merge(PessoaFisica pF) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
 	public void excluir(PessoaFisica pF) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
+	public PessoaFisica getPessoaFisicaByCPF(String cpf) throws SQLException;
 }

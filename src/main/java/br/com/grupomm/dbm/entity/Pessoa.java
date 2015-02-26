@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 public class Pessoa implements AbstractEntity, Serializable {
 
 	private static final long serialVersionUID = -4436364834267060433L;
-	public static final String teste = "TEEESTE";
 	 
 	@Id
 	@GeneratedValue

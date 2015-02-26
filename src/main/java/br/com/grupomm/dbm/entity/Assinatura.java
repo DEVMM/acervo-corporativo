@@ -44,6 +44,10 @@ public class Assinatura implements AbstractEntity, Serializable {
 	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco_entrega")
 	private Endereco enderecoEntrega;
+	
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn(name="assinatura_pai")
+	private Assinatura assinaturaPai;
 
 	public Long getIdAssinatura() {
 		return idAssinatura;
@@ -101,6 +105,14 @@ public class Assinatura implements AbstractEntity, Serializable {
 		this.enderecoEntrega = enderecoEntrega;
 	}
 
+	public Assinatura getAssinaturaPai() {
+		return assinaturaPai;
+	}
+
+	public void setAssinaturaPai(Assinatura assinaturaPai) {
+		this.assinaturaPai = assinaturaPai;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -109,6 +121,8 @@ public class Assinatura implements AbstractEntity, Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((assinaturaPai == null) ? 0 : assinaturaPai.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime
 				* result
@@ -133,6 +147,11 @@ public class Assinatura implements AbstractEntity, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Assinatura other = (Assinatura) obj;
+		if (assinaturaPai == null) {
+			if (other.assinaturaPai != null)
+				return false;
+		} else if (!assinaturaPai.equals(other.assinaturaPai))
+			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -177,7 +196,8 @@ public class Assinatura implements AbstractEntity, Serializable {
 				+ codigo + ", status=" + status + ", tipoAssinatura="
 				+ tipoAssinatura + ", pessoa=" + pessoa + ", enderecoCobranca="
 				+ enderecoCobranca + ", enderecoEntrega=" + enderecoEntrega
-				+ "]";
+				+ ", assinaturaPai=" + assinaturaPai + "]";
 	}
+
 
 }

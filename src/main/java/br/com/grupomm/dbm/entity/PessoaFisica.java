@@ -16,14 +16,14 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="pessoa_fisica")
 @Component
+@Table(name="pessoa_fisica")
 public class PessoaFisica implements AbstractEntity, Serializable {
 
 	private static final long serialVersionUID = 482401824743530814L;
 	
 	@Id
-	@ManyToOne (fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_pessoa")
 	private Pessoa pessoa;
 	private String nome;

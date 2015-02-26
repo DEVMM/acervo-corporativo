@@ -43,4 +43,16 @@ public class PessoaJuridicaServiceImpl implements PessoaJuridicaService {
 		this.pessoaJuridicaDAO.excluir(pJ);
 	}
 
+	@Override
+	public PessoaJuridica getPessoaJuridicaByCNPJ(String CNPJ)
+			throws SQLException {
+		return this.pessoaJuridicaDAO.getPessoaJuridicaByCNPJ(CNPJ);
+	}
+
+	@Override
+	public PessoaJuridica getPessoaJuridicaByInscricaoEstadual(String ie)
+			throws SQLException {
+		return this.pessoaJuridicaDAO.getPessoaJuridicaByInscricaoEstadual(ie);
+	}
+
 }

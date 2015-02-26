@@ -15,30 +15,27 @@
 <c:url var="myUrl" value="${string2}" />    
  
     <link rel="stylesheet" type="text/css" href="${myUrl}resources/css/global.css">
-    <link rel="stylesheet" type="text/css" href="${myUrl}resources/css/css-listbox/reveal.css">
-    <!-- Owl Carousel Assets -->
-    <link href="${myUrl}resources/css/owl.carousel.css" rel="stylesheet">
-    <link href="${myUrl}resources/css/owl.theme.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${myUrl}resources/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="${myUrl}resources/css/calendario/jquery-ui-1.8.20.custom.css" />
-
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script src="${myUrl}resources/js/jquery-ui-1.10.4.custom.js"></script>
-    <script src="${myUrl}resources/js/cadastro.js"></script>    
     
-    <!----------------------------------------------- Carrocel --------------------------------------------> 
-    <!--list box -->
+    <!-- jQuery plugins -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+
+ 	<!--------------------------------------------- validaçao do formulario   ----------------------------->
+ 	<script type="text/javascript" src="${myUrl}resources/js/validacao.js"></script>
+ 	
+	<!--------------------------------------------- Esses script são para mascaras ------------------------>
+	<script src="${myUrl}resources/js/jquery-1.2.6.pack.js"></script>
+	<script src="${myUrl}resources/js/jquery.maskedinput-1.1.4.pack.js"></script>
+	<script src="${myUrl}resources/js/mascaras.js"></script>
+	
+	<!--list box -->
     <script src="${myUrl}resources/js/js-listbox/jquery.reveal.js"></script>
     <script src="${myUrl}resources/js/js-listbox/jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="${myUrl}resources/js/js-listbox/jquery.reveal.js"></script>
+    <link rel="stylesheet" type="text/css" href="${myUrl}resources/css/css-listbox/reveal.css">
     <!-- End List Box -->
-
-    <!--Calendario -->
-    <script type="text/javascript" src="${myUrl}resources/js/calendario/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="${myUrl}resources/js/calendario/jquery-ui-1.8.20.custom.min.js"></script>
-    <script type="text/javascript" src="${myUrl}resources/js/calendario/calendario.js"></script>
- 
-
-<!-- --------------------------------------------- Carrocel --------------------------------------------> 
+ 	

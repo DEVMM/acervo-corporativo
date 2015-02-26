@@ -42,4 +42,9 @@ public class PessoaFisicaServiceImpl implements PessoaFisicaService {
 		this.pessoaFisicaDAO.excluir(pF);
 	}
 
+	@Override
+	public PessoaFisica getPessoaFisicaByCPF(String cpf) throws SQLException {
+		return this.pessoaFisicaDAO.getPessoaFisicaByCPF(cpf);
+	}
+
 }

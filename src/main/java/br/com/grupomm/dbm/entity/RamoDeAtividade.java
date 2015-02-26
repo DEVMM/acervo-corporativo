@@ -1,15 +1,11 @@
 package br.com.grupomm.dbm.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -25,9 +21,7 @@ public class RamoDeAtividade implements AbstractEntity, Serializable {
 	@Column(name="id_ramo")
 	private Integer idRamo;
 	private String descricao;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ramo")
-	private List<PessoaJuridica> pessoasJuridicas = new ArrayList<PessoaJuridica>();
-	
+
 	public Integer getIdRamo() {
 		return idRamo;
 	}
@@ -48,9 +42,6 @@ public class RamoDeAtividade implements AbstractEntity, Serializable {
 		result = prime * result
 				+ ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((idRamo == null) ? 0 : idRamo.hashCode());
-		result = prime
-				* result
-				+ ((pessoasJuridicas == null) ? 0 : pessoasJuridicas.hashCode());
 		return result;
 	}
 	@Override
@@ -72,25 +63,14 @@ public class RamoDeAtividade implements AbstractEntity, Serializable {
 				return false;
 		} else if (!idRamo.equals(other.idRamo))
 			return false;
-		if (pessoasJuridicas == null) {
-			if (other.pessoasJuridicas != null)
-				return false;
-		} else if (!pessoasJuridicas.equals(other.pessoasJuridicas))
-			return false;
 		return true;
 	}
 	
 	@Override
 	public String toString() {
-		return "RamoDeAtividade [idRamo=" + idRamo + ", descricao=" + descricao
-				+ ", pessoasJuridicas=" + pessoasJuridicas + "]";
+		return "RamoDeAtividade [idRamo=" + idRamo + ", descricao=" + descricao + "]";
 	}
-	public List<PessoaJuridica> getPessoasJuridicas() {
-		return pessoasJuridicas;
-	}
-	public void setPessoasJuridicas(List<PessoaJuridica> pessoasJuridicas) {
-		this.pessoasJuridicas = pessoasJuridicas;
-	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

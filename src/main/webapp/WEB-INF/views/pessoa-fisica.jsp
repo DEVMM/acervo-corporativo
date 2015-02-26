@@ -1,51 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<!-- GIOVANNI PIPI -->
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Grupo M&amp;M - Cadastro Pessoa FÌsica</title>
 	<%@ include file="componentes/header/head.jsp" %>
-	<script type="text/javascript">
-		function atualizacep() {
-			var cep = document.getElementById('campo-cep').value;
-			cep = cep.replace(/\D/g, "");
-			var methodURL = "http://cep.correiocontrol.com.br/" + cep + ".js";
-			s = document.createElement('script')
-			s.setAttribute('charset', 'utf-8')
-			s.src = methodURL
-			document.querySelector('head').appendChild(s)
-		}
-
-		function correiocontrolcep(valor) {
-			if (valor.erro) {
-				alert('Cep n„o encontrado');
-				return;
-			};
-			document.getElementById('logradouro').value = valor.logradouro
-			document.getElementById('bairro').value = valor.bairro
-			document.getElementById('cidade').value = valor.localidade
-			document.getElementById('estado').value = valor.uf
-			document.getElementById('pais').value = 'Brasil'
-		}
-		
-		document.addEventListener("DOMContentLoaded", function() {
-		    var elements = document.getElementsByTagName("INPUT");
-		    for (var i = 0; i < elements.length; i++) {
-		        elements[i].oninvalid = function(e) {
-		            e.target.setCustomValidity("");
-		            if (!e.target.validity.valid) {
-		                e.target.setCustomValidity("Giovanni Pinto");
-		            }
-		        };
-		        elements[i].oninput = function(e) {
-		            e.target.setCustomValidity("");
-		        };
-		    }
-		})
-		
-	</script>
 </head>
-
 <body>
 	<div id="content">
 		<%@ include file="componentes/header/menu-bar.jsp" %>
@@ -53,7 +12,7 @@
 			Assinaturas <span class="raquo">&raquo;</span>
 		</h1>
 			<div class="content-cadastro">
-				<!-- MENU TOPO DE NAVEGA√á√ÉO -->
+				<!-- MENU TOPO DE NAVEGA√É‚Ä°√É∆íO -->
 				<form action="/GrupoMMDBM/dbm/cadastrar-usuario/salvar" name="cadastro" method="POST">
 					<div class="column">
 						<div class="form-perfil form-profissional">
@@ -61,12 +20,15 @@
 							<strong class="icon-lado"></strong>Dados Perfil
 						</h3>
 							<div class="input-box">
-								<label style="padding-top: 10px">Nome pipi </label>
-								<input type="text" name="nome" maxlength="200" placeholder="Digite seu nome!" required="required" /> </div>
+								<label style="padding-top: 10px">Nome</label>
+								<input type="text" name="nome" maxlength="200" placeholder="Digite seu nome" required="required" /> </div>
 							<!-- end input-box -->
+							<div id="loadingCEP" style="display: none">
+								<img alt="" src="${myUrl}resources/images/AjaxLoader.gif">
+							</div>
 							<div class="input-box">
 								<label style="padding-top: 10px">Sobrenome</label>
-								<input type="text" name="sobrenome" maxlength="200" placeholder="Digite seu Sobrenome" /> </div>
+								<input type="text" name="sobrenome" maxlength="200" placeholder="Digite seu Sobrenome" required="required" class="sobreNome" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<div id="notification"></div>
@@ -76,38 +38,39 @@
 							<!-- end input-box -->
 							<div class="input-box">
 								<label style="padding-top: 10px">CPF</label>
-								<input type="text" name="CPF" value="" placeholder="Digite seu CPF" /> </div>
+								<input type="text" name="CPF" class="cpf" id="cpf" onblur="validarCPF()" placeholder="Digite seu CPF" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label style="padding-top: 10px">E-mail</label>
-								<input type="text" name="email" maxlength="100" placeholder="Digite seu e-mail" /> </div>
+								<input type="email" name="email" id="email" onblur="validarEmail()" class="email" placeholder="Digite seu e-mail" required="required" />
+							</div>
 							<!-- end input-box -->
 							<div class="input-box">
-								<label style="padding-top: 10px">E-mail Segundario</label>
-								<input type="text" name="emailSecundario" maxlength="200" placeholder="Digite um e-mail alternativo" /> </div>
+								<label style="padding-top: 10px">E-mail Secund·rio</label>
+								<input type="email" name="emailSecundario" id="emailSec" onblur="validarEmailSecundario()" class="emailSeg" placeholder="Digite um e-mail alternativo" /> </div>
 							<!-- end input-box -->
 							<br />
 							<br />
 							<br /> </div>
 						<!-- end form-perfil -->
-						<!-- ENDERE√áO DE ENTREGA -->
+						<!-- ENDERE√É‚Ä°O DE ENTREGA -->
 						<div class="form-endereco" id='form-endereco'>
 							<h4>&nbsp;</h4>
 							<div class="input-box">
 								<label style="padding-top: 10px">Telefone</label>
-								<input type="text" name="telefoneResidencial" maxlength="200" placeholder="Digite Telefone" /> </div>
+								<input type="tel" name="telefoneResidencial" class="tel" maxlength="200" placeholder="Digite Telefone" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label style="padding-top: 10px">Telefone Comercial</label>
-								<input type="text" name="telefoneComercial" maxlength="200" placeholder="Digite Telefone Comercial" /> </div>
+								<input type="tel" name="telefoneComercial" class="telcom" maxlength="200" placeholder="Digite Telefone Comercial" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label style="padding-top: 10px">Celular</label>
-								<input type="text" name="celular" maxlength="200" placeholder="Digite Celular" /> </div>
+								<input type="tel" name="celular" class="cel" maxlength="200" placeholder="Digite Celular" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="data">Data de nascimento</label>
-								<input type="text" name="dtNascimento" placeholder="Digite sua data de nescimento" class="data" /> </div>
+								<input type="text" name="dtNascimento" class="data" placeholder="Digite sua data de nescimento" class="data" required="required" /> </div>
 						</div>
 					</div>
 					<div class="column2">
@@ -126,15 +89,15 @@
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="numero" style="padding-top: 10px">N˙mero</label>
-								<input class="campo" type="text" name="enderecoResidencial.numero" /> </div>
+								<input class="campo" type="number" name="enderecoResidencial.numero" id="num" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="numero" style="padding-top: 10px">Complemento</label>
-								<input class="campo" type="text" name="enderecoResidencial.complemento" /> </div>
+								<input class="campo" type="text" name="enderecoResidencial.complemento" class="complemento" required="required" /> </div>
 							<!-- end input-box -->
 						</div>
 						<!-- end form-profissional -->
-						<!-- ENDERE√áO DE ENTREGA -->
+						<!-- ENDERE√É‚Ä°O DE ENTREGA -->
 						<div class="form-endereco" id='form-endereco'>
 							<h4>&nbsp;</h4>
 							<div class="input-box">
@@ -183,7 +146,7 @@
 								<label for="pais" style="padding-top: 10px">PaÌs</label>
 								<select class="campopais" id="pais" name="enderecoResidencial.pais">
 									<option value="">Selecione</option>
-									<option value="¡frica do Sul">¡frica do Sul</option>
+									<option value="AÅfrica do Sul">AÅfrica do Sul</option>
 									<option value="Alb‚nia">Alb‚nia</option>
 									<option value="Alemanha">Alemanha</option>
 									<option value="Andorra">Andorra</option>
@@ -192,10 +155,10 @@
 									<option value="Antigua">Antigua</option>
 									<option value="Ar·bia Saudita">Ar·bia Saudita</option>
 									<option value="Argentina">Argentina</option>
-									<option value="ArmÍnia">ArmÍnia</option>
+									<option value="ArmÈnia">ArmÈnia</option>
 									<option value="Aruba">Aruba</option>
 									<option value="Austr·lia">Austr·lia</option>
-									<option value="¡ustria">¡ustria</option>
+									<option value="√Åustria">√Åustria</option>
 									<option value="Azerbaij„o">Azerbaij„o</option>
 									<option value="Bahamas">Bahamas</option>
 									<option value="Bahrein">Bahrein</option>
@@ -209,7 +172,7 @@
 									<option value="Brunei">Brunei</option>
 									<option value="Bulg·ria">Bulg·ria</option>
 									<option value="Burkina Fasso">Burkina Fasso</option>
-									<option value="bot„o">bot„o</option>
+									<option value="Bot„o">Bot„o</option>
 									<option value="Cabo Verde">Cabo Verde</option>
 									<option value="Camarıes">Camarıes</option>
 									<option value="Camboja">Camboja</option>
@@ -231,12 +194,12 @@
 									<option value="EUA">EUA</option>
 									<option value="Egito">Egito</option>
 									<option value="El Salvador">El Salvador</option>
-									<option value="Emirados ¡rabes">Emirados ¡rabes</option>
+									<option value="Emirados ¡Årabes">Emirados ¡Årabes</option>
 									<option value="Equador">Equador</option>
 									<option value="EritrÈia">EritrÈia</option>
 									<option value="EscÛcia">EscÛcia</option>
 									<option value="Eslov·quia">Eslov·quia</option>
-									<option value="EslovÍnia">EslovÍnia</option>
+									<option value="EslovÈnia">EslovÈnia</option>
 									<option value="Espanha">Espanha</option>
 									<option value="EstÙnia">EstÙnia</option>
 									<option value="EtiÛpia">EtiÛpia</option>
@@ -262,7 +225,7 @@
 									<option value="Honduras">Honduras</option>
 									<option value="Hong Kong">Hong Kong</option>
 									<option value="Hungria">Hungria</option>
-									<option value="IÍmen">IÍmen</option>
+									<option value="IÈmen">IÈmen</option>
 									<option value="Ilhas Cayman">Ilhas Cayman</option>
 									<option value="Ilhas Cook">Ilhas Cook</option>
 									<option value="Ilhas CuraÁao">Ilhas CuraÁao</option>
@@ -271,7 +234,7 @@
 									<option value="Ilhas Virgens (brit.)">Ilhas Virgens (brit.)</option>
 									<option value="Ilhas Virgens(amer.)">Ilhas Virgens(amer.)</option>
 									<option value="Ilhas Wallis e Futuna">Ilhas Wallis e Futuna</option>
-									<option value="Õndia">Õndia</option>
+									<option value="√çndia">√çndia</option>
 									<option value="IndonÈsia">IndonÈsia</option>
 									<option value="Inglaterra">Inglaterra</option>
 									<option value="Irlanda">Irlanda</option>
@@ -320,11 +283,11 @@
 									<option value="Porto Rico">Porto Rico</option>
 									<option value="Portugal">Portugal</option>
 									<option value="Qatar">Qatar</option>
-									<option value="QuÍnia">QuÍnia</option>
+									<option value="QuÈnia">QuÈnia</option>
 									<option value="Rep. Dominicana">Rep. Dominicana</option>
 									<option value="Rep. Tcheca">Rep. Tcheca</option>
 									<option value="Reunion">Reunion</option>
-									<option value="RomÍnia">RomÍnia</option>
+									<option value="RomÈnia">RomÈnia</option>
 									<option value="Ruanda">Ruanda</option>
 									<option value="R˙ssia">R˙ssia</option>
 									<option value="Saipan">Saipan</option>
@@ -363,8 +326,56 @@
 						</div>
 						<!-- end form-endereco -->
 					</div>
-					<!-- end column-right -->
-					<!-- Bot√µes Continuar depois / Prosseguir -->
+						<div class="column2">            
+		                <!-- Formul·rio Dados Profissionais -->
+			                <div class="form-profissional" id="form-profissional">
+			                    <h5><strong class="icon-lado"></strong>Dados Profissionais</h5>
+			                    <!--<a class="btn-depois" id="disable2"  title="Preencher depois">Preencher depois</a>
+			                    <a class="btn-depois" id="disable3"  title="Preencher agora">Preencher agora</a>-->
+			                    <div class="input-box">
+			                        <label for="empresa" style="padding-top: 10px">Empresa</label>
+			                        <input type="text" id="campos-valide" name="empresa" maxlength="200" placeholder="Digite seu nome!" />
+			                    </div><!-- end input-box --> 
+			                     <div class="input-box">
+			                        <label for="porte-empresa">Porte da empresa</label>
+			                        <select class="campo1" id="porte-empresa" name="porte-empresa">
+			                            <option value="">Selecione</option>
+			                        </select>
+			                    </div><!-- end input-box -->
+			                    <div class="input-box">
+			                        <label for="ramo-atividade">Ramo de atividade</label>
+			                        <select class="campo1" id="ramo-atividade" name="ramo-atividade">
+			                            <option value="">Selecione</option>
+			                        </select>
+			                    </div><!-- end input-box -->
+			                        
+			                </div><!-- end form-profissional -->
+			                
+			                <!-- ENDERE«O DE ENTREGA -->
+			                <div class="form-endereco" id='form-endereco'>
+			                    <h4>&nbsp;</h4>
+			                    <div class="input-box">
+			                        <label for="cidade" style="padding-top: 10px">¡rea de AtuaÁ„o</label>                       
+			                        <select class="areaatu" id="areaatu" name="idArea">
+			                            <option value="">Selecione</option>
+			                            <c:forEach var="item" items="${listarAreas}">
+			                            	<option value="${item.idArea}">${item.descricao}</option>
+			                            </c:forEach>
+			                        </select>
+			                    </div><!-- end input-box -->
+			                    <div class="input-box">
+			                        <label for="estado" style="padding-top: 10px">NÌvel Hier·quico</label>
+			                        <select class="nhire" id="nhire" name="idNivel">
+			                            <option value="">Selecione</option>
+			                            <c:forEach var="item" items="${listarNiveis}">
+			                            	<option value="${item.idNivel}">${item.descricao}</option>
+			                            </c:forEach>
+			                        </select>
+			                    </div><!-- end input-box -->
+			   
+			                </div><!-- end form-endereco --> 
+			                             
+			            </div><!-- end column-right -->
 					<div style="clear: both;"></div>
 					<div class="btn-cadastro">
 						<input type="submit" class="btn-prosseguir" value="Finalizar"> </div>
@@ -375,5 +386,4 @@
 			<!-- content-cadastro -->
 	</div>
 </body>
-
 </html>

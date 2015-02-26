@@ -22,7 +22,7 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 	private static final long serialVersionUID = -3348468570357598711L;
 	
 	@Id
-	@ManyToOne (fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_pessoa")
 	private Pessoa pessoa;
 	
@@ -35,15 +35,15 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 	private String razaoSocial;
 	private Boolean ativo;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST})
 	@JoinColumn(name="id_porte")
 	private Porte porte;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST})
 	@JoinColumn(name="id_ramo")
 	private RamoDeAtividade ramo;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco")
 	private Endereco enderecoComercial;
 	
@@ -51,10 +51,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 	@JoinColumn(name = "id_responsavel")
 	private PessoaFisica responsavel;
 	
-	@OneToOne(fetch = FetchType.LAZY)		
-	@JoinColumn(name = "id_aoscuidados")
-	private PessoaFisica aosCuidados;
-
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -135,14 +131,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 		this.responsavel = responsavel;
 	}
 
-	public PessoaFisica getAosCuidados() {
-		return aosCuidados;
-	}
-
-	public void setAosCuidados(PessoaFisica aosCuidados) {
-		this.aosCuidados = aosCuidados;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -152,8 +140,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((CNPJ == null) ? 0 : CNPJ.hashCode());
-		result = prime * result
-				+ ((aosCuidados == null) ? 0 : aosCuidados.hashCode());
 		result = prime
 				* result
 				+ ((enderecoComercial == null) ? 0 : enderecoComercial
@@ -188,11 +174,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 			if (other.CNPJ != null)
 				return false;
 		} else if (!CNPJ.equals(other.CNPJ))
-			return false;
-		if (aosCuidados == null) {
-			if (other.aosCuidados != null)
-				return false;
-		} else if (!aosCuidados.equals(other.aosCuidados))
 			return false;
 		if (enderecoComercial == null) {
 			if (other.enderecoComercial != null)
@@ -249,8 +230,7 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 				+ ", nomeFantasia=" + nomeFantasia + ", razaoSocial="
 				+ razaoSocial + ", ativo=" + ativo + ", porte=" + porte
 				+ ", ramo=" + ramo + ", enderecoComercial=" + enderecoComercial
-				+ ", responsavel=" + responsavel + ", aosCuidados="
-				+ aosCuidados + "]";
+				+ ", responsavel=" + responsavel + "]";
 	}
 	
 	
