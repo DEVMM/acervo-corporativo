@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:b="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	<http auto-config="true" use-expressions="true">
+		<access-denied-handler error-page="/publico/403" />
+		<intercept-url pattern="/admin/**" access="hasRole('Administradores')" />
+		<form-login 
+			login-page="/"
+			always-use-default-target="true" default-target-url="/inicio"
+			username-parameter="email"
+			password-parameter="senha"
+			authentication-failure-url="/?login_error=1" />
+			
+		<logout delete-cookies="JSESSIONID" />
+        <remember-me key="uniqueAndSecret"/>
+	</http>
+	
+	
+
+	<authentication-manager>
+		<authentication-provider>
+			<!-- <password-encoder hash="md5" /> -->
+			<jdbc-user-service data-source-ref="dataSource"
+				
+				authorities-by-username-query="	select U.email AS 'USUARIO', P.tipo AS 'PERMISSAO'
+										from usuario U 
+										inner join grupo_usuario UG on (UG.id_usuario = U.id_usuario)
+										inner join Grupo G on (G.id_grupo = UG.id_grupo) 
+										inner join grupo_permissao GP on (GP.id_grupo = G.id_grupo)
+										inner join permissao P on (P.id_permissao = GP.id_permissao)
+										where U.email=?" 
+				users-by-username-query="select email, senha, ativo
+									 	FROM usuario 
+									 	WHERE email = ?" />
+		</authentication-provider>
+	</authentication-manager>
+	
+</b:beans>
+
