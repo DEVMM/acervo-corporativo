@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AcessoController {
-	
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/dbm/login")
 	public String login(Model model) {
 		return "login";
 	}

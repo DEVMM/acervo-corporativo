@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AssinaturaController {
 	
 	
-	@RequestMapping(value="/")
+	@RequestMapping(value="/dbm/dashboard")
 	public String dashboardAssinaturas(Model model) {
 		return "dashboard-assinaturas";
 	}

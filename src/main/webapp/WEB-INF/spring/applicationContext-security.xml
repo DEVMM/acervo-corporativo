@@ -8,33 +8,26 @@
 		<access-denied-handler error-page="/publico/403" />
 		<intercept-url pattern="/admin/**" access="hasRole('Administradores')" />
 		<form-login 
-			login-page="/"
-			always-use-default-target="true" default-target-url="/inicio"
-			username-parameter="email"
-			password-parameter="senha"
-			authentication-failure-url="/?login_error=1" />
-			
+			login-page="/dbm/login"
+			always-use-default-target="true" default-target-url="/dbm/dashboard"
+			username-parameter="codigo"
+			authentication-failure-url="/dbm/login/?login_error=1" />
 		<logout delete-cookies="JSESSIONID" />
-        <remember-me key="uniqueAndSecret"/>
 	</http>
-	
-	
 
 	<authentication-manager>
 		<authentication-provider>
 			<!-- <password-encoder hash="md5" /> -->
 			<jdbc-user-service data-source-ref="dataSource"
 				
-				authorities-by-username-query="	select U.email AS 'USUARIO', P.tipo AS 'PERMISSAO'
-										from usuario U 
-										inner join grupo_usuario UG on (UG.id_usuario = U.id_usuario)
-										inner join Grupo G on (G.id_grupo = UG.id_grupo) 
-										inner join grupo_permissao GP on (GP.id_grupo = G.id_grupo)
-										inner join permissao P on (P.id_permissao = GP.id_permissao)
-										where U.email=?" 
-				users-by-username-query="select email, senha, ativo
-									 	FROM usuario 
-									 	WHERE email = ?" />
+				authorities-by-username-query="select P.codigo AS 'CODIGO', PF.descricao AS 'PERFIL'
+										from pessoa P 
+										inner join perfil_pessoa PP on (PP.id_pessoa = P.id_pessoa)
+										inner join perfil PF on (PF.id_perfil = PP.id_perfil) 
+										where P.codigo=?" 
+				users-by-username-query="select codigo, id_pessoa, ativo
+									 	FROM pessoa 
+									 	WHERE codigo = ?" />
 		</authentication-provider>
 	</authentication-manager>
 	

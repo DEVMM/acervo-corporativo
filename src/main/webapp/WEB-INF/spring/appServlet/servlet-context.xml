@@ -33,6 +33,7 @@
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>br.com.grupomm.dbm.entity.Pessoa</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Perfil</beans:value>
                 <beans:value>br.com.grupomm.dbm.entity.PessoaFisica</beans:value>
                 <beans:value>br.com.grupomm.dbm.entity.PessoaJuridica</beans:value>
                 <beans:value>br.com.grupomm.dbm.entity.Endereco</beans:value>

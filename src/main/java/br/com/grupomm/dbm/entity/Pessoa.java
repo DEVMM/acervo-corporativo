@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,76 +30,116 @@ public class Pessoa implements AbstractEntity, Serializable {
 	@Column(name = "id_pessoa")
 	private Long id;
 	private String codigo;
+	private Boolean ativo;
+	
 	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Email> emails = new ArrayList<>();
+	
 	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Telefone> telefones = new ArrayList<>();
+	
 	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Assinatura> assinaturas = new ArrayList<>();
+	
 	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<PessoaFisica> pessoasFisicas = new ArrayList<>();
+	
 	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<PessoaJuridica> pessoasJuridicas = new ArrayList<>();
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+	@JoinTable(name="perfil_pessoa", 
+		joinColumns = { @JoinColumn(name = "id_pessoa", nullable = false, updatable = false) }, 
+		inverseJoinColumns = { @JoinColumn(name = "id_perfil", nullable = false, updatable = false) })  
+	private List<Perfil> perfis = new ArrayList<Perfil>();
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+
+	public Boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
 	public List<Email> getEmails() {
 		return emails;
 	}
-	public void setEmails(Email email) {
-		email.setPessoa(this);
-		this.emails.add(email);
+
+	public void setEmails(List<Email> emails) {
+		this.emails = emails;
 	}
+
 	public List<Telefone> getTelefones() {
 		return telefones;
 	}
-	public void setTelefones(Telefone telefone) {
-		telefone.setPessoa(this);
-		this.telefones.add(telefone);
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
+
 	public List<Assinatura> getAssinaturas() {
 		return assinaturas;
 	}
-	public void setAssinaturas(Assinatura assinatura) {
-		assinatura.setPessoa(this);
-		this.assinaturas.add(assinatura);
+
+	public void setAssinaturas(List<Assinatura> assinaturas) {
+		this.assinaturas = assinaturas;
 	}
+
 	public List<PessoaFisica> getPessoasFisicas() {
 		return pessoasFisicas;
 	}
-	public void setPessoasFisicas(PessoaFisica pessoaFisica) {
-		pessoaFisica.setPessoa(this);
-		this.pessoasFisicas.add(pessoaFisica);
+
+	public void setPessoasFisicas(List<PessoaFisica> pessoasFisicas) {
+		this.pessoasFisicas = pessoasFisicas;
 	}
+
 	public List<PessoaJuridica> getPessoasJuridicas() {
 		return pessoasJuridicas;
 	}
-	public void setPessoasJuridicas(PessoaJuridica pessoaJuridica) {
-		pessoaJuridica.setPessoa(this);
-		this.pessoasJuridicas.add(pessoaJuridica);
+
+	public void setPessoasJuridicas(List<PessoaJuridica> pessoasJuridicas) {
+		this.pessoasJuridicas = pessoasJuridicas;
 	}
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
 				+ ((assinaturas == null) ? 0 : assinaturas.hashCode());
+		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((emails == null) ? 0 : emails.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((perfis == null) ? 0 : perfis.hashCode());
 		result = prime * result
 				+ ((pessoasFisicas == null) ? 0 : pessoasFisicas.hashCode());
 		result = prime
@@ -106,7 +149,7 @@ public class Pessoa implements AbstractEntity, Serializable {
 				+ ((telefones == null) ? 0 : telefones.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -120,6 +163,11 @@ public class Pessoa implements AbstractEntity, Serializable {
 			if (other.assinaturas != null)
 				return false;
 		} else if (!assinaturas.equals(other.assinaturas))
+			return false;
+		if (ativo == null) {
+			if (other.ativo != null)
+				return false;
+		} else if (!ativo.equals(other.ativo))
 			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
@@ -135,6 +183,11 @@ public class Pessoa implements AbstractEntity, Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (perfis == null) {
+			if (other.perfis != null)
+				return false;
+		} else if (!perfis.equals(other.perfis))
 			return false;
 		if (pessoasFisicas == null) {
 			if (other.pessoasFisicas != null)
@@ -153,4 +206,14 @@ public class Pessoa implements AbstractEntity, Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", codigo=" + codigo + ", ativo=" + ativo
+				+ ", emails=" + emails + ", telefones=" + telefones
+				+ ", assinaturas=" + assinaturas + ", pessoasFisicas="
+				+ pessoasFisicas + ", pessoasJuridicas=" + pessoasJuridicas
+				+ ", perfis=" + perfis + "]";
+	}
+
 }

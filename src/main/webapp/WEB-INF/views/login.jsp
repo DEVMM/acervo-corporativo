@@ -45,11 +45,12 @@
 				<aside class="Alogin">
 					<article class="cx-acesso">
 						<h1><span>ASSINATURAS</span></h1>
-						<form>
+						<form  method="post"	action="<c:url value="/j_spring_security_check"></c:url>">
 							<fieldset class="Lemail">
 								<label for="id">ID</label>
-								<input type="text" id="campo-id" name="id"> </fieldset>
-							<a href="javascript:validarLoginCapa()"> <img src="resources/images/btn-login.png" class="conectar-btn"> </a>
+								<input type="text" id="codigo" name="codigo">
+							</fieldset>
+							<a href="#"> <img src="resources/images/btn-login.png" class="conectar-btn"> </a>
 							<section class="ladoEsqueci"> <span>
 							<a href="#" class="txt-loginN" data-reveal-id="myModal" data-animation="fade"><span class="aspE">&raquo;</span>Recuperar Meu ID</a>
 								</span>

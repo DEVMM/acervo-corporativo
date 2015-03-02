@@ -33,7 +33,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 	private String nomeFantasia;
 	@Column(name="razao_social")
 	private String razaoSocial;
-	private Boolean ativo;
 	
 	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST})
 	@JoinColumn(name="id_porte")
@@ -50,7 +49,7 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_responsavel")
 	private PessoaFisica responsavel;
-	
+
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -89,14 +88,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
-	}
-
-	public Boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
 	}
 
 	public Porte getPorte() {
@@ -157,7 +148,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 				+ ((razaoSocial == null) ? 0 : razaoSocial.hashCode());
 		result = prime * result
 				+ ((responsavel == null) ? 0 : responsavel.hashCode());
-		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
 		return result;
 	}
 
@@ -215,11 +205,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 				return false;
 		} else if (!responsavel.equals(other.responsavel))
 			return false;
-		if (ativo == null) {
-			if (other.ativo != null)
-				return false;
-		} else if (!ativo.equals(other.ativo))
-			return false;
 		return true;
 	}
 
@@ -228,10 +213,9 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 		return "PessoaJuridica [pessoa=" + pessoa + ", CNPJ=" + CNPJ
 				+ ", inscricaoEstadual=" + inscricaoEstadual
 				+ ", nomeFantasia=" + nomeFantasia + ", razaoSocial="
-				+ razaoSocial + ", ativo=" + ativo + ", porte=" + porte
-				+ ", ramo=" + ramo + ", enderecoComercial=" + enderecoComercial
-				+ ", responsavel=" + responsavel + "]";
+				+ razaoSocial + ", porte=" + porte + ", ramo=" + ramo
+				+ ", enderecoComercial=" + enderecoComercial + ", responsavel="
+				+ responsavel + "]";
 	}
-	
 	
 }

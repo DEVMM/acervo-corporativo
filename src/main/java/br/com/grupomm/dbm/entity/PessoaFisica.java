@@ -30,81 +30,98 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 	private String sobrenome;
 	private char sexo;
 	private String CPF;
+	
 	@Column(name="data_nascimento")
 	private Date dtNascimento;
-	private Boolean status;
+	
 	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_nivel")
 	private NivelHierarquico nivel;
+	
 	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_area")
 	private AreaDeAtuacao area;
+	
 	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco")
 	private Endereco enderecoResidencial;
+
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
+
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getSobrenome() {
 		return sobrenome;
 	}
+
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
+
 	public char getSexo() {
 		return sexo;
 	}
+
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+
 	public String getCPF() {
 		return CPF;
 	}
+
 	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
+
 	public Date getDtNascimento() {
 		return dtNascimento;
 	}
+
 	public void setDtNascimento(Date dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
-	public Boolean getStatus() {
-		return status;
-	}
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
+
 	public NivelHierarquico getNivel() {
 		return nivel;
 	}
+
 	public void setNivel(NivelHierarquico nivel) {
 		this.nivel = nivel;
 	}
+
 	public AreaDeAtuacao getArea() {
 		return area;
 	}
+
 	public void setArea(AreaDeAtuacao area) {
 		this.area = area;
 	}
+
 	public Endereco getEnderecoResidencial() {
 		return enderecoResidencial;
 	}
+
 	public void setEnderecoResidencial(Endereco enderecoResidencial) {
 		this.enderecoResidencial = enderecoResidencial;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,9 +140,9 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 		result = prime * result + sexo;
 		result = prime * result
 				+ ((sobrenome == null) ? 0 : sobrenome.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -177,21 +194,16 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 				return false;
 		} else if (!sobrenome.equals(other.sobrenome))
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "PessoaFisica [pessoa=" + pessoa + ", nome=" + nome
 				+ ", sobrenome=" + sobrenome + ", sexo=" + sexo + ", CPF="
-				+ CPF + ", dtNascimento=" + dtNascimento + ", status=" + status
-				+ ", nivel=" + nivel + ", area=" + area
-				+ ", enderecoResidencial=" + enderecoResidencial + "]";
+				+ CPF + ", dtNascimento=" + dtNascimento + ", nivel=" + nivel
+				+ ", area=" + area + ", enderecoResidencial="
+				+ enderecoResidencial + "]";
 	}
-	
 	
 }

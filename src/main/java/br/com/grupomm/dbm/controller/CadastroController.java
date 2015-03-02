@@ -121,6 +121,7 @@ public class CadastroController {
 		if(!(emailSecundario.length()==0)){ Email mail1 = new Email(); mail1.setEmail(emailSecundario); mail1.setPessoa(this.pessoa); mail1.setPrincipal(false); this.cadastroBO.salvarEmail(mail1); }
 		pF.setCPF(pF.getCPF().replace(".", ""));
 		pF.setCPF(pF.getCPF().replace("-", ""));
+		pF.getEnderecoResidencial().setTipo("Residencial");
 		pF.setPessoa(this.pessoa);
 		pF.setNivel(this.cadastroBO.getNivelByID(Integer.parseInt(idNivel)));
 		pF.setArea(this.cadastroBO.getAreaByID(Integer.parseInt(idArea)));
