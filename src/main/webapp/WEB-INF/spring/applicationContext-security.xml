@@ -4,17 +4,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+                        
 	<http auto-config="true" use-expressions="true">
 		<access-denied-handler error-page="/publico/403" />
-		<intercept-url pattern="/admin/**" access="hasRole('Administradores')" />
+		<intercept-url pattern="/dbm/**" access="hasRole('master')" />
 		<form-login 
-			login-page="/dbm/login"
+			login-page="/publico/login"
 			always-use-default-target="true" default-target-url="/dbm/dashboard"
 			username-parameter="codigo"
-			authentication-failure-url="/dbm/login/?login_error=1" />
+			password-parameter="codigo"
+			authentication-failure-url="/publico/login/?login_error=1" />
 		<logout delete-cookies="JSESSIONID" />
 	</http>
-
+	
 	<authentication-manager>
 		<authentication-provider>
 			<!-- <password-encoder hash="md5" /> -->
@@ -25,9 +27,7 @@
 										inner join perfil_pessoa PP on (PP.id_pessoa = P.id_pessoa)
 										inner join perfil PF on (PF.id_perfil = PP.id_perfil) 
 										where P.codigo=?" 
-				users-by-username-query="select codigo, id_pessoa, ativo
-									 	FROM pessoa 
-									 	WHERE codigo = ?" />
+				users-by-username-query="select codigo as 'login ', codigo as 'password', ativo FROM pessoa WHERE codigo = ?" />
 		</authentication-provider>
 	</authentication-manager>
 	

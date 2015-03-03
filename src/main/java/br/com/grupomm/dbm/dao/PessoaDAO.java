@@ -20,7 +20,9 @@ public class PessoaDAO extends AbstractDAO<Pessoa> {
 	
 	public Pessoa getPessoaByCodigo(String codigo) throws SQLException {
 		Session session = this.sessionFactory.getCurrentSession();
-		return (Pessoa) session.createQuery("from Pessoa where codigo=:codigo").setParameter("codigo", codigo).uniqueResult();
+		Pessoa p = (Pessoa) session.createQuery("from Pessoa where codigo=:codigo").setParameter("codigo", codigo).uniqueResult();
+		System.out.println(p);
+		return p;
 	}
 	
 }

@@ -43,9 +43,9 @@
 					<p>UsuÃ¡rios que possuem perfíl completo tem acesso príveligiado em toda plataforma Meio e Mensagem! perfíl completo tem acesso príveligiado em toda plataforma Meio e Mensagem!</p>
 				</section>
 				<aside class="Alogin">
-					<article class="cx-acesso">
+					<article class="cx-acesso"> 	
 						<h1><span>ASSINATURAS</span></h1>
-						<form  method="post"	action="<c:url value="/j_spring_security_check"></c:url>">
+						<form  method="post" action="<c:url value="/j_spring_security_check"/>">
 							<fieldset class="Lemail">
 								<label for="id">ID</label>
 								<input type="text" id="codigo" name="codigo">
@@ -58,20 +58,6 @@
 						</form>
 					</article>
 				</aside>
-				<br clear="all" />
-				<!--<div id="myModalEmal" class="reveal-modal">
-		<a class="close-reveal-modal">&#215;</a>
-			<section class="tarjaApare">
-				<article>
-					<form>
-						<h2>recuperar meu email <span class="raquo2">&raquo</span></h2>
-						<label for="txt_id">id</label>
-						<input type="text" name="nome" id="nome" />
-						<input type="image" src="images/btn_recuperar-email.png" />
-					</form>
-				</article>
-			</section>
-		</div>-->
 				<br clear="all" />
 				<div id="myModal" class="reveal-modal">
 					<!--<a class="close-reveal-modal">&#215;</a>-->

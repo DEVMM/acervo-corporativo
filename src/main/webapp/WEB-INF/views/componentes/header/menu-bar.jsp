@@ -18,6 +18,7 @@
             <li><a href="#" title=""><span class="none-border">fale conosco</span></a></li>
             <li><a class="uppercase" href="javascript:chamarAlert()" title="Inscreva-se"><span>Cadastre-se</span></a></li>
             <li><a class="uppercase account" href="#" title=""><span class="right">Login</span></a>
+            <li><a href="<c:url value="/j_spring_security_logout"/>">Sair <i class="entypo-logout right"></i></a></li>
                 <ul class="submenu" style="display: none;">
                     <li>
                         <label>Login</label> 
@@ -47,7 +48,6 @@
                         <a href="javascript:alert_recupera_login()">Esqueci meu login</a>
                     </li>
                 </ul>
-            </li>
        </ul>    
         </form>
 
