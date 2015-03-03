@@ -60,18 +60,18 @@
      
     <context:component-scan base-package="br.com.grupomm.dbm" />
      
-    <!-- <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
      
     <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
     
-    
+    <!--  -->
     	<beans:bean id="cadastroBO" class="br.com.grupomm.dbm.bo.CadastroBO"></beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="pessoaDAO" class="br.com.grupomm.dbm.dao.PessoaDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -81,9 +81,9 @@
     
     <beans:bean id="pessoa" class="br.com.grupomm.dbm.entity.Pessoa">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="pessoaFisicaDAO" class="br.com.grupomm.dbm.dao.PessoaFisicaDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -93,9 +93,9 @@
     
     <beans:bean id="pessoaFisica" class="br.com.grupomm.dbm.entity.PessoaFisica">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="pessoaJuridicaDAO" class="br.com.grupomm.dbm.dao.PessoaJuridicaDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -105,9 +105,9 @@
     
     <beans:bean id="pessoaJuridica" class="br.com.grupomm.dbm.entity.PessoaJuridica">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="areaDeAtuacaoDAO" class="br.com.grupomm.dbm.dao.AreaDeAtuacaoDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -117,10 +117,10 @@
     
     <beans:bean id="areaDeAtuacao" class="br.com.grupomm.dbm.entity.AreaDeAtuacao">
     </beans:bean>
+    <!--  -->
     
     
-    
-    
+    <!--  -->
     <beans:bean id="assinaturaDAO" class="br.com.grupomm.dbm.dao.AssinaturaDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -130,9 +130,9 @@
     
     <beans:bean id="assinatura" class="br.com.grupomm.dbm.entity.Assinatura">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="emailDAO" class="br.com.grupomm.dbm.dao.EmailDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -142,9 +142,9 @@
     
     <beans:bean id="email" class="br.com.grupomm.dbm.entity.Email">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="enderecoDAO" class="br.com.grupomm.dbm.dao.EnderecoDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -154,9 +154,9 @@
     
     <beans:bean id="endereco" class="br.com.grupomm.dbm.entity.Endereco">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="nivelHierarquicoDAO" class="br.com.grupomm.dbm.dao.NivelHierarquicoDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -166,9 +166,9 @@
     
     <beans:bean id="nivelHierarquico" class="br.com.grupomm.dbm.entity.NivelHierarquico">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="porteDAO" class="br.com.grupomm.dbm.dao.PorteDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -178,9 +178,9 @@
     
     <beans:bean id="porte" class="br.com.grupomm.dbm.entity.Porte">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="ramoDeAtividadeDAO" class="br.com.grupomm.dbm.dao.RamoDeAtividadeDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -190,9 +190,9 @@
     
     <beans:bean id="ramoDeAtividade" class="br.com.grupomm.dbm.entity.RamoDeAtividade">
     </beans:bean>
+    <!--  -->
     
-    
- 	
+ 	<!--  -->
     <beans:bean id="telefoneDAO" class="br.com.grupomm.dbm.dao.TelefoneDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -202,9 +202,9 @@
     
     <beans:bean id="telefone" class="br.com.grupomm.dbm.entity.Telefone">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="tipoAssinaturaDAO" class="br.com.grupomm.dbm.dao.TipoAssinaturaDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -214,20 +214,11 @@
     
     <beans:bean id="tipoAssinatura" class="br.com.grupomm.dbm.entity.TipoAssinatura">
     </beans:bean>
+    <!--  -->
     
-    
-    
+    <!--  -->
     <beans:bean id="gerarCodigo" class="br.com.grupomm.dbm.utils.GerarCodigo">
     </beans:bean>
-    
-    
-    
-    <beans:bean id="springSecurityProvider" class="br.com.grupomm.dbm.security.SpringSecurityProvider"></beans:bean>
-    
-    
-    
-    <beans:bean id="userDetailsServiceImpl" class="br.com.grupomm.dbm.security.UserDetailsServiceImpl">
-        <beans:property name="pessoaDAO" ref="pessoaDAO"></beans:property>
-    </beans:bean> -->
+    <!--  -->
     
 </beans:beans>

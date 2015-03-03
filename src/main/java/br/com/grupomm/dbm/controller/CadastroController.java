@@ -24,10 +24,8 @@ import br.com.grupomm.dbm.utils.GerarCodigo;
 @Controller
 public class CadastroController {
 
-	@Autowired
-	private CadastroBO cadastroBO;
-	@Autowired
-	private GerarCodigo gerarCodigo;
+	private CadastroBO cadastroBO = new CadastroBO();
+	private GerarCodigo gerarCodigo = new GerarCodigo();
 	@Autowired
 	private Pessoa pessoa;
 	@Autowired

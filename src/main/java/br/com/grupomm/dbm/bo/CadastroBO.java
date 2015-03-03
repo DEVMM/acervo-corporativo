@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Component;
 
 import br.com.grupomm.dbm.entity.AreaDeAtuacao;
 import br.com.grupomm.dbm.entity.Email;
@@ -18,7 +17,6 @@ import br.com.grupomm.dbm.entity.Porte;
 import br.com.grupomm.dbm.entity.RamoDeAtividade;
 import br.com.grupomm.dbm.entity.Telefone;
 
-@Component
 public class CadastroBO extends AutowiredServices {
 
 	public void salvarPessoa(Pessoa p) {
