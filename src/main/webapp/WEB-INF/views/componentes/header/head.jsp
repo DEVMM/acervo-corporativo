@@ -25,12 +25,7 @@
 
  	<!--------------------------------------------- validaçao do formulario   ----------------------------->
  	<script type="text/javascript" src="${myUrl}resources/js/validacao.js"></script>
- 	
-	<!--------------------------------------------- Esses script são para mascaras ------------------------>
-	<script src="${myUrl}resources/js/jquery-1.2.6.pack.js"></script>
-	<script src="${myUrl}resources/js/jquery.maskedinput-1.1.4.pack.js"></script>
-	<script src="${myUrl}resources/js/mascaras.js"></script>
-	
+ 		
 	<!--list box -->
     <script src="${myUrl}resources/js/js-listbox/jquery.reveal.js"></script>
     <script src="${myUrl}resources/js/js-listbox/jquery-1.4.4.min.js"></script>
@@ -38,4 +33,7 @@
     <script type="text/javascript" src="${myUrl}resources/js/js-listbox/jquery.reveal.js"></script>
     <link rel="stylesheet" type="text/css" href="${myUrl}resources/css/css-listbox/reveal.css">
     <!-- End List Box -->
- 	
+ 	   	<!--------------------------------------------- Esses script são para mascaras giigigig ------------------------>
+	<script src="${myUrl}resources/js/jquery-1.2.6.pack.js"></script>
+	<script src="${myUrl}resources/js/jquery.maskedinput-1.1.4.pack.js"></script>
+	<script src="${myUrl}resources/js/mascaras.js"></script>

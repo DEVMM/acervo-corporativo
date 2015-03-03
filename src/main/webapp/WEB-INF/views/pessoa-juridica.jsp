@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Grupo M&amp;M - Cadastro Pessoa Jurídica</title>
 	<%@ include file="componentes/header/head.jsp" %>
 </head>
-
 <body>
 	<div id="content">
 		<%@ include file="componentes/header/menu-bar.jsp" %>
@@ -23,19 +21,19 @@
 						</h3>
 							<div class="input-box">
 								<label for="empresa" style="padding-top: 10px">Razão Social </label>
-								<input type="text" name="razaoSocial" maxlength="200" placeholder="Razão Social" /> </div>
+								<input type="text" name="razaoSocial" maxlength="200" placeholder="Razão Social" required="required" class="razaoS"/> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="empresa" style="padding-top: 10px">Nome de Fantasia </label>
-								<input type="text" name="nomeFantasia" maxlength="200" placeholder="Nome de Fantasia" /> </div>
+								<input type="text" name="nomeFantasia" maxlength="200" placeholder="Nome de Fantasia" required="required" class="fantasia"/> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="empresa" style="padding-top: 10px">CNPJ</label>
-								<input type="text" id="cnpj" onblur="validarCNPJ()" class="cnpj" name="CNPJ"  maxlength="200" placeholder="Digite seu CNPJ" /> </div>
+								<input type="text" id="cnpj" onblur="validarCNPJ()" class="cnpj" name="CNPJ"  maxlength="200" placeholder="Digite seu CNPJ" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="inscri-estadual">Inscrição Estadual</label>
-								<input type="text" name="inscricaoEstadual" maxlength="200" placeholder="Digite a Inscrição Estadual" /> </div>
+								<input type="text" name="inscricaoEstadual" maxlength="200" placeholder="Digite a Inscrição Estadual" required="required"/> </div>
 							<!-- end input-box -->
 							<br />
 							<br />
@@ -45,21 +43,21 @@
 							<h4>&nbsp;</h4>
 							<div class="input-box">
 								<label for="e-mail" style="padding-top: 10px">E-mail</label>
-								<input type="text" id="e-mail" name="email" maxlength="100" value="" placeholder="Digite seu e-mail" />
+								<input type="email" id="e-mail" class="email" name="email" maxlength="100" value="" placeholder="Digite seu e-mail" required="required" />
 								<input type="hidden" name="principal" value="true" /> </div>
 							<div class="input-box">
 								<label for="telefone-comercial" style="padding-top: 10px">Telefone Comercial </label>
-								<input type="text" name="numero" maxlength="200" class="tel" placeholder="Digite Telefone Comercial" />
+								<input type="text" name="numero" maxlength="200" class="tel" placeholder="Digite Telefone Comercial" required="required"/>
 								<input type="hidden" name="tipo" value="comercial" /> </div>
 							<div class="input-box">
 								<label for="porte-empresa">Porte da empresa</label>
-								<select class="campo1" id="porte-empresa" name="idPorte">
+								<select class="campo1" id="porte-empresa" name="idPorte" required="required">
 									<option value="1">Selecione</option>
 								</select>
 							</div>
 							<div class="input-box">
 								<label for="ramo-atividade">Ramo de atividade</label>
-								<select class="campo1" id="ramo-atividade" name="idRamo">
+								<select class="campo1" id="ramo-atividade" name="idRamo" required="required">
 									<option value="1">Selecione</option>
 								</select>
 							</div>
@@ -71,7 +69,7 @@
 						</h5>
 							<div class="input-box">
 								<label for="cep" style="padding-top: 10px">CEP</label>
-								<input class="cep campo inputNcep" id="campo-cep" class="cep" type="text" name="enderecoResidencial.cep" onblur="atualizacep()" placeholder="Digite seu cep" /> <span class="localizarCep"><a href="#"
+								<input class="cep campo inputNcep" id="campo-cep" required="required" class="cep" type="text" name="enderecoResidencial.cep" onblur="atualizacep()" placeholder="Digite seu cep" /> <span class="localizarCep"><a href="#"
 								onclick="atualizacep()">Localizar Cep</a></span> </div>
 							<!-- end input-box -->
 							<div id="loadingCEP" style="display: none">
@@ -79,11 +77,11 @@
 							</div>
 							<div class="input-box">
 								<label for="logradouro" style="padding-top: 10px">Logradouro</label>
-								<input class="campo" type="text" id="logradouro" name="enderecoResidencial.logradouro" /> </div>
+								<input class="campo" type="text" id="logradouro" name="enderecoResidencial.logradouro" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="numero" style="padding-top: 10px">Número</label>
-								<input class="campo" type="text" name="enderecoResidencial.numero" /> </div>
+								<input class="campo" type="text" name="enderecoResidencial.numero" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="numero" style="padding-top: 10px">Complemento</label>
@@ -94,11 +92,11 @@
 							<h4>&nbsp;</h4>
 							<div class="input-box">
 								<label for="bairro" style="padding-top: 10px">Bairro</label>
-								<input class="campo" type="text" id="bairro" name="enderecoResidencial.bairro" /> </div>
+								<input class="campo" type="text" id="bairro" name="enderecoResidencial.bairro" required="required"/> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="cidade" style="padding-top: 10px">Cidade</label>
-								<input class="campo" type="text" id="cidade" name="enderecoResidencial.cidade" /> </div>
+								<input class="campo" type="text" id="cidade" name="enderecoResidencial.cidade" required="required" /> </div>
 							<!-- end input-box -->
 							<div class="input-box">
 								<label for="estado" style="padding-top: 10px">Estado</label>
@@ -326,27 +324,27 @@
 								</h5>
 								<div class="input-box">
 			                        <label for="cpf" style="padding-top: 10px">CPF</label>
-			                        <input class="cpf campo inputNcep" type="text" id="cpf" name="CPF" placeholder="Digite o CPF"  />
+			                        <input class="cpf campo inputNcep" type="text" id="cpf" name="CPF" placeholder="Digite o CPF" required="required" />
 			                        <span class="localizarCep"> <a href="#" onclick="localizarResponsavel()">Localizar Responsável</a></span>
 			                    </div>
 								<div class="input-box">
 									<label for="empresa" style="padding-top: 10px">Nome</label>
-									<input type="text" id="campos-valide" name="nome" maxlength="200" placeholder="Digite seu nome!" /> </div>
+									<input type="text" id="campos-valide" name="nome" maxlength="200" placeholder="Digite seu nome!" required="required"/> </div>
 								<!-- end input-box -->
 								<div class="input-box">
 									<label for="empresa" style="padding-top: 10px">Sobrenome</label>
-									<input type="text" id="campos-valide" name="Sobrenome" maxlength="200" placeholder="Digite seu sobrenome" /> </div>
+									<input type="text" id="campos-valide" name="Sobrenome" maxlength="200" placeholder="Digite seu sobrenome" required="required" /> </div>
 								<!-- end input-box -->
 								<div class="input-box">
 									<label for="e-mail" style="padding-top: 10px">E-mail</label>
-									<input type="text" id="campos-valide" name="e-mail" maxlength="100" placeholder="Digite seu e-mail" onblur="verEmail()" /> </div>
+									<input type="text" id="campos-valide" name="e-mail" maxlength="100" placeholder="Digite seu e-mail" onblur="verEmail()" required="required" /> </div>
 								<!-- end input-box -->
 							</div>
 							<div class="form-endereco" id='form-endereco'>
 								<h4>&nbsp;</h4>
 								<div class="input-box">
 									<label for="celular" style="padding-top: 10px">Celular</label>
-									<input type="text" id="campos-valide" name="celular" class="cel" maxlength="200" placeholder="Digite Celular" /> </div>
+									<input type="text" id="campos-valide" name="celular" class="cel" maxlength="200" placeholder="Digite Celular" required="required" /> </div>
 								<div class="input-box">
 									<label for="areaatuacao" style="padding-top: 10px">Área de atuação</label>
 									<select class="campoestado" id="campos-valide" name="areaatuacao">

@@ -23,9 +23,9 @@
 			document.getElementById('loadingCEP').style.display = "none"
 		}
 		
-		/*Validação javascript */
+		/*Campo sobreNome */
 		document.addEventListener("DOMContentLoaded", function() {
-	      var elements = document.getElementsByTagName("INPUT");
+	      var elements = document.getElementsByClassName("nome");
 	      for (var i = 0; i < elements.length; i++) {
 	          elements[i].oninvalid = function(e) {
 	              e.target.setCustomValidity("");
@@ -70,24 +70,7 @@
 		          };
 		      }
 		  });
-		
-		/* Campo email segundario
-		document.addEventListener("DOMContentLoaded", function() {
-		      var elements = document.getElementsByClassName("emailSeg");
-		      for (var i = 0; i < elements.length; i++) {
-		          elements[i].oninvalid = function(e) {
-		              e.target.setCustomValidity("");
-		              if (!e.target.validity.valid) {
-		                  e.target.setCustomValidity("Preencha seu Email Segundario!");
-		              }
-		          };
-		          elements[i].oninput = function(e) {
-		              e.target.setCustomValidity("");
-		          };
-		      }
-		  });
-		   */
-		
+			
 		/* Campo Telefone*/
 		document.addEventListener("DOMContentLoaded", function() {
 		      var elements = document.getElementsByClassName("tel");
@@ -167,7 +150,55 @@
 		              e.target.setCustomValidity("");
 		          };
 		      }
-		  });	
+		  });
+		
+		/*Campo razao social*/
+		document.addEventListener("DOMContentLoaded", function() {
+	      var elements = document.getElementsByClassName("razaoS");
+	      for (var i = 0; i < elements.length; i++) {
+	          elements[i].oninvalid = function(e) {
+	              e.target.setCustomValidity("");
+	              if (!e.target.validity.valid) {
+	                  e.target.setCustomValidity("Preencha esse Campo!");
+	              }
+	          };
+	          elements[i].oninput = function(e) {
+	              e.target.setCustomValidity("");
+	          };
+	      }
+	  });
+		
+		/*Campo nome Fantasia */
+		document.addEventListener("DOMContentLoaded", function() {
+	      var elements = document.getElementsByClassName("fantasia");
+	      for (var i = 0; i < elements.length; i++) {
+	          elements[i].oninvalid = function(e) {
+	              e.target.setCustomValidity("");
+	              if (!e.target.validity.valid) {
+	                  e.target.setCustomValidity("Preencha o Nome Fantasia!");
+	              }
+	          };
+	          elements[i].oninput = function(e) {
+	              e.target.setCustomValidity("");
+	          };
+	      }
+	  });
+		
+		/*Campo nome CNPJ */
+		document.addEventListener("DOMContentLoaded", function() {
+	      var elements = document.getElementsByClassName("cnpj");
+	      for (var i = 0; i < elements.length; i++) {
+	          elements[i].oninvalid = function(e) {
+	              e.target.setCustomValidity("");
+	              if (!e.target.validity.valid) {
+	                  e.target.setCustomValidity("Preencha o CNPJ!");
+	              }
+	          };
+	          elements[i].oninput = function(e) {
+	              e.target.setCustomValidity("");
+	          };
+	      }
+	  });
 		
 		function TestaCPF(cpf) {
 			cpf = cpf.replace(/[^\d]+/g,'');
