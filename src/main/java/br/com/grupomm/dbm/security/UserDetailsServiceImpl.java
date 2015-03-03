@@ -4,28 +4,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.grupomm.dbm.dao.PessoaDAO;
 import br.com.grupomm.dbm.entity.Perfil;
 import br.com.grupomm.dbm.entity.Pessoa;
 
 @SuppressWarnings("deprecation")
+@Service
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired
 	private PessoaDAO pessoaDAO;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		
 		Pessoa p = new Pessoa();
 		try {
 			p = this.pessoaDAO.getPessoaByCodigo(username);
@@ -36,7 +37,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			e.printStackTrace();
 			return null;
 		}
-		
 		return builUserFromEntity(p);
 	}
 	
@@ -49,18 +49,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			boolean accountNonExpired = true;
             boolean credentialsNonExpired = true;
             boolean accountNonLocked = true;
-            
             Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             for (Perfil p : pessoa.getPerfis()) {
             	authorities.add(new GrantedAuthorityImpl(p.getDescricao()));
 			}
-            
             springUser = new User(login, senha, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-            
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return springUser;
 	}
 }

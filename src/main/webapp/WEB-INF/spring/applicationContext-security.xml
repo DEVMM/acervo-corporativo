@@ -4,20 +4,29 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-	<http auto-config="true" use-expressions="true">
+	<!-- <http auto-config="true" use-expressions="true">
 		<access-denied-handler error-page="/publico/403" />
-		<intercept-url pattern="/admin/**" access="hasRole('Administradores')" />
+		<intercept-url pattern="/dbm/**" access="hasRole('master')" />
 		<form-login 
-			login-page="/dbm/login"
+			login-page="/publico/login"
 			always-use-default-target="true" default-target-url="/dbm/dashboard"
 			username-parameter="codigo"
-			authentication-failure-url="/dbm/login/?login_error=1" />
+			authentication-failure-url="/publico/login/?login_error=1" />
 		<logout delete-cookies="JSESSIONID" />
+	</http> -->
+	
+	<http auto-config="true" use-expressions="true">
+	    <intercept-url pattern="/**" access="hasRole('master')" />
+	    <logout logout-success-url="/publico/login" />
 	</http>
+	
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="springSecurityProvider" />
+    </authentication-manager>
 
-	<authentication-manager>
+	<!-- <authentication-manager>
 		<authentication-provider>
-			<!-- <password-encoder hash="md5" /> -->
+			<password-encoder hash="md5" />
 			<jdbc-user-service data-source-ref="dataSource"
 				
 				authorities-by-username-query="select P.codigo AS 'CODIGO', PF.descricao AS 'PERFIL'
@@ -29,7 +38,7 @@
 									 	FROM pessoa 
 									 	WHERE codigo = ?" />
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager> -->
 	
 </b:beans>
 

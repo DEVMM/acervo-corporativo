@@ -281,7 +281,6 @@
 			var cpf = document.getElementById("cpf").value;
 			cpf = cpf.replace(/\./g,'');
 			cpf = cpf.replace(/-/g,'');
-			
 			$.ajax({
 				type : "POST",
 				url : methodURL,

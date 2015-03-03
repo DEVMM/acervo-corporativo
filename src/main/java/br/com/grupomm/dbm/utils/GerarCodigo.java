@@ -5,16 +5,18 @@ import static org.bitbucket.dollar.Dollar.$;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import br.com.grupomm.dbm.entity.Pessoa;
 import br.com.grupomm.dbm.service.PessoaService;
 
+@Component
 public class GerarCodigo {
 	
 	protected PessoaService pessoaService;
-	@Autowired(required=true)
-	@Qualifier(value="pessoaService")
+	/*@Autowired(required=true)
+	@Qualifier(value="pessoaService")*/
+	@Autowired
 	public void setPessoaService(PessoaService ps){
 		this.pessoaService = ps;
 	}
