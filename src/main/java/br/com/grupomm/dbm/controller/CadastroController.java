@@ -23,9 +23,11 @@ import br.com.grupomm.dbm.utils.GerarCodigo;
 
 @Controller
 public class CadastroController {
-
-	private CadastroBO cadastroBO = new CadastroBO();
-	private GerarCodigo gerarCodigo = new GerarCodigo();
+	
+	@Autowired
+	private CadastroBO cadastroBO;
+	@Autowired
+	private GerarCodigo gerarCodigo;
 	@Autowired
 	private Pessoa pessoa;
 	@Autowired
@@ -33,7 +35,7 @@ public class CadastroController {
 	@Autowired
 	private Endereco e;
 
-	@RequestMapping(value="/dbm/cadastrar-usuario")
+	@RequestMapping(value="/assinatura/cadastrar-usuario")
 	public String cadastroPessoaFisica(Model model) {
 
 		model.addAttribute("pessoaFisica", new PessoaFisica());
@@ -50,7 +52,7 @@ public class CadastroController {
 		return "pessoa-fisica";
 	}
 	
-	@RequestMapping(value="/dbm/cadastrar-empresa")
+	@RequestMapping(value="/assinatura/cadastrar-empresa")
 	public String cadastroPessoaJuridica(Model model) {
 		model.addAttribute("pessoaJuridica", new PessoaJuridica());
 		model.addAttribute("telefone", new Telefone());
@@ -64,7 +66,7 @@ public class CadastroController {
 		return "pessoa-juridica";
 	}
 	
-	@RequestMapping(value= "/dbm/cadastrar-empresa/salvar", method = RequestMethod.POST)
+	@RequestMapping(value= "/assinatura/cadastrar-empresa/salvar", method = RequestMethod.POST)
 	public @ResponseBody String salvarEmpresa(@ModelAttribute("pessoaJuridica") PessoaJuridica pJ,
 			@ModelAttribute("telefone") Telefone telefone,
 			@ModelAttribute("email") Email email,
@@ -79,6 +81,9 @@ public class CadastroController {
 		this.cadastroBO.salvarTelefone(telefone);
 		email.setPessoa(this.pessoa);
 		this.cadastroBO.salvarEmail(email);
+		String cep = pJ.getEnderecoComercial().getCep();
+		cep.replace("-", "");
+		pJ.getEnderecoComercial().setCep(cep);
 		pJ.setPessoa(this.pessoa);
 		pJ.setPorte(this.cadastroBO.getPorteById(Integer.parseInt(idPorte)));
 		pJ.setRamo(this.cadastroBO.getRamoById(Integer.parseInt(idRamo)));
@@ -94,7 +99,7 @@ public class CadastroController {
 		return "dados-finalizados";
 	}
 
-	@RequestMapping(value= "/dbm/cadastrar-usuario/salvar", method = RequestMethod.POST)
+	@RequestMapping(value= "/assinatura/cadastrar-usuario/salvar", method = RequestMethod.POST)
 	public String salvarUsuario(@ModelAttribute("pessoaFisica") PessoaFisica pF,
 			@ModelAttribute("email") String email,
 			@ModelAttribute("emailSecundario") String emailSecundario,
@@ -117,6 +122,9 @@ public class CadastroController {
 		//Vincular Emails
 		if(!(email.length()==0)) { Email mail = new Email(); mail.setEmail(email); mail.setPrincipal(true); mail.setPessoa(this.pessoa); this.cadastroBO.salvarEmail(mail); }
 		if(!(emailSecundario.length()==0)){ Email mail1 = new Email(); mail1.setEmail(emailSecundario); mail1.setPessoa(this.pessoa); mail1.setPrincipal(false); this.cadastroBO.salvarEmail(mail1); }
+		String cep = pF.getEnderecoResidencial().getCep();
+		cep.replace("-", "");
+		pF.getEnderecoResidencial().setCep(cep);
 		pF.setCPF(pF.getCPF().replace(".", ""));
 		pF.setCPF(pF.getCPF().replace("-", ""));
 		pF.getEnderecoResidencial().setTipo("Residencial");
@@ -134,7 +142,7 @@ public class CadastroController {
 		return this.cadastroBO.getPessoaByCodigo(p.getCodigo());
 	}
 	
-	@RequestMapping(value="/dbm/localizarResponsavel", method=RequestMethod.POST)
+	@RequestMapping(value="/assinatura/localizarResponsavel", method=RequestMethod.POST)
 	public String localizarResponsavel(@ModelAttribute("CPF") String CPF, Model model) {
 		try {
 			model.addAttribute("pessoaFisica", this.cadastroBO.getPessoaFisicaByCPF(CPF));
@@ -148,7 +156,7 @@ public class CadastroController {
 		}
 	}
 	
-	@RequestMapping(value="/dbm/validarCPF", method= RequestMethod.POST)
+	@RequestMapping(value="/assinatura/validarCPF", method= RequestMethod.POST)
 	public @ResponseBody String validarCPF(@ModelAttribute("cpf") String CPF) {
 		try {
 			this.cadastroBO.getPessoaFisicaByCPF(CPF);
@@ -159,7 +167,7 @@ public class CadastroController {
 		}
 	}
 	
-	@RequestMapping(value="/dbm/validarEmail", method= RequestMethod.POST)
+	@RequestMapping(value="/assinatura/validarEmail", method= RequestMethod.POST)
 	public @ResponseBody String validarEmail(@ModelAttribute("email") String email) {
 		try {
 			Email e = this.cadastroBO.getEmailByEndereco(email);
@@ -171,7 +179,7 @@ public class CadastroController {
 		}
 	}
 	
-	@RequestMapping(value="/dbm/validarCNPJ", method= RequestMethod.POST)
+	@RequestMapping(value="/assinatura/validarCNPJ", method= RequestMethod.POST)
 	public @ResponseBody String validarCNPJ(@ModelAttribute("cnpj") String cnpj) {
 		System.out.println(cnpj);
 		try {
@@ -183,7 +191,7 @@ public class CadastroController {
 		}
 	}
 	
-	@RequestMapping(value="/dbm/validarInscricaoEstadual", method= RequestMethod.POST)
+	@RequestMapping(value="/assinatura/validarInscricaoEstadual", method= RequestMethod.POST)
 	public @ResponseBody String validarInscricaoEstadual(@ModelAttribute("inscricaoEstadual") String inscricaoEstadual) {
 		try {
 			this.cadastroBO.getPessoaJuridicaByInscricaoEstadual(inscricaoEstadual);

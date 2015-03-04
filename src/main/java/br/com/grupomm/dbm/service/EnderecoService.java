@@ -17,5 +17,5 @@ public interface EnderecoService {
 	public void excluir(Endereco e) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
 	public List<Endereco> listarEndereco() throws SQLException;
 	public Endereco EnderecoByID(int id) throws SQLException;
-	public Endereco getEnderecoByCepAndNumero(Long cep, Integer numero) throws SQLException;
+	public Endereco getEnderecoByCepAndNumero(String cep, Integer numero) throws SQLException;
 }

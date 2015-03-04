@@ -22,7 +22,7 @@ public class EnderecoDAO extends AbstractDAO<Endereco> {
 		return (Endereco) session.get(Endereco.class, new Integer(id));
 	}
 	
-	public Endereco getEnderecoByCepAndNumero(Long cep, Integer numero) throws SQLException {
+	public Endereco getEnderecoByCepAndNumero(String cep, Integer numero) throws SQLException {
 		Session session = this.sessionFactory.getCurrentSession();      
 		return (Endereco) session.createQuery("From Endereco where cep= :cep and numero= :numero").setParameter("cep", cep).setParameter("numero", numero).uniqueResult();
 	}

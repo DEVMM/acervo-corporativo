@@ -21,7 +21,7 @@ public class Endereco implements AbstractEntity, Serializable {
 	@GeneratedValue
 	@Column(name="id_endereco")
 	private Long id;
-	private Long cep;
+	private String cep;
 	private String logradouro;
 	private Integer numero;
 	private String complemento;
@@ -38,10 +38,10 @@ public class Endereco implements AbstractEntity, Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getCep() {
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(Long cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 	public String getLogradouro() {

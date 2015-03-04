@@ -63,7 +63,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 	}
 
 	@Override
-	public Endereco getEnderecoByCepAndNumero(Long cep, Integer numero)
+	public Endereco getEnderecoByCepAndNumero(String cep, Integer numero)
 			throws SQLException {
 		return this.enderecoDAO.getEnderecoByCepAndNumero(cep, numero);
 	}

@@ -285,25 +285,28 @@
 			var methodURL= "validarEmail"
 			var email = document.getElementById("email").value;
 			var emailSec = document.getElementById("emailSec").value;
-			
-			if (email == emailSec) {
-				document.getElementById("emailSec").className = "borda-validacao";
-			} else {
-				$.ajax({
-					type : "POST",
-					url : methodURL,
-					data : "email="+emailSec,
-					success : function(response) {
-						if (response == "true") {
-							document.getElementById("emailSec").className = "borda-validacao";
-						} else {
-							document.getElementById("emailSec").className = "";
+			if(emailSec) {
+				if (email == emailSec) {
+					document.getElementById("emailSec").className = "borda-validacao";
+				} else {
+					$.ajax({
+						type : "POST",
+						url : methodURL,
+						data : "email="+emailSec,
+						success : function(response) {
+							if (response == "true") {
+								document.getElementById("emailSec").className = "borda-validacao";
+							} else {
+								document.getElementById("emailSec").className = "";
+							}
+						},
+						error : function(e) {
+							console.log("Falha ao carregar os Dados");
 						}
-					},
-					error : function(e) {
-						console.log("Falha ao carregar os Dados");
-					}
-				});
+					});
+				}
+			} else {
+				document.getElementById("emailSec").className = "";
 			}
 		}
 		
