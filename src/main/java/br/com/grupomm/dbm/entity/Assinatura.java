@@ -1,6 +1,7 @@
 package br.com.grupomm.dbm.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Assinatura implements AbstractEntity, Serializable {
 
-	private static final long serialVersionUID = 8885793599420506021L;
+	private final static long serialVersionUID = 8885793599420506021L;
 	
 	@Id
 	@GeneratedValue
@@ -28,24 +29,25 @@ public class Assinatura implements AbstractEntity, Serializable {
 	private Long idAssinatura;
 	private String codigo;
 	private Boolean status;
+	private Date dataCriacao;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_tipo_assinatura")
 	private TipoAssinatura tipoAssinatura;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_pessoa")
 	private Pessoa pessoa;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco_cobranca")
 	private Endereco enderecoCobranca;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco_entrega")
 	private Endereco enderecoEntrega;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="assinatura_pai")
 	private Assinatura assinaturaPai;
 
@@ -190,14 +192,12 @@ public class Assinatura implements AbstractEntity, Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Assinatura [idAssinatura=" + idAssinatura + ", codigo="
-				+ codigo + ", status=" + status + ", tipoAssinatura="
-				+ tipoAssinatura + ", pessoa=" + pessoa + ", enderecoCobranca="
-				+ enderecoCobranca + ", enderecoEntrega=" + enderecoEntrega
-				+ ", assinaturaPai=" + assinaturaPai + "]";
+	public Date getDataCriacao() {
+		return dataCriacao;
 	}
 
+	public void setDataCriacao(Date calendar) {
+		this.dataCriacao = calendar;
+	}
 
 }

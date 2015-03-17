@@ -5,9 +5,9 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -18,14 +18,11 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 @Table(name="pessoa_fisica")
-public class PessoaFisica implements AbstractEntity, Serializable {
+@DiscriminatorValue("pessoa_fisica")
+public class PessoaFisica extends Pessoa implements AbstractEntity, Serializable {
 
 	private static final long serialVersionUID = 482401824743530814L;
 	
-	@Id
-	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-	@JoinColumn(name="id_pessoa")
-	private Pessoa pessoa;
 	private String nome;
 	private String sobrenome;
 	private char sexo;
@@ -42,17 +39,10 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 	@JoinColumn(name="id_area")
 	private AreaDeAtuacao area;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco")
 	private Endereco enderecoResidencial;
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
 
 	public String getNome() {
 		return nome;
@@ -136,7 +126,6 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 						.hashCode());
 		result = prime * result + ((nivel == null) ? 0 : nivel.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		result = prime * result + sexo;
 		result = prime * result
 				+ ((sobrenome == null) ? 0 : sobrenome.hashCode());
@@ -182,11 +171,6 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (pessoa == null) {
-			if (other.pessoa != null)
-				return false;
-		} else if (!pessoa.equals(other.pessoa))
-			return false;
 		if (sexo != other.sexo)
 			return false;
 		if (sobrenome == null) {
@@ -195,15 +179,6 @@ public class PessoaFisica implements AbstractEntity, Serializable {
 		} else if (!sobrenome.equals(other.sobrenome))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "PessoaFisica [pessoa=" + pessoa + ", nome=" + nome
-				+ ", sobrenome=" + sobrenome + ", sexo=" + sexo + ", CPF="
-				+ CPF + ", dtNascimento=" + dtNascimento + ", nivel=" + nivel
-				+ ", area=" + area + ", enderecoResidencial="
-				+ enderecoResidencial + "]";
 	}
 	
 }

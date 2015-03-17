@@ -24,7 +24,7 @@ public class Telefone implements AbstractEntity, Serializable {
 	@GeneratedValue
 	@Column(name="id_telefone")
 	private Long id;
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_pessoa")
 	private Pessoa pessoa;
 	private String numero;
@@ -97,11 +97,6 @@ public class Telefone implements AbstractEntity, Serializable {
 		} else if (!tipo.equals(other.tipo))
 			return false;
 		return true;
-	}
-	@Override
-	public String toString() {
-		return "Telefone [id=" + id + ", pessoa=" + pessoa + ", numero="
-				+ numero + ", tipo=" + tipo + "]";
 	}
 	
 }

@@ -6,17 +6,13 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
- 
     <annotation-driven />
- 
     <resources mapping="/resources/**" location="/resources/" />
- 
     <beans:bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/" />
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
- 
     <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -45,6 +41,7 @@
                 <beans:value>br.com.grupomm.dbm.entity.RamoDeAtividade</beans:value>
                 <beans:value>br.com.grupomm.dbm.entity.Assinatura</beans:value>
                 <beans:value>br.com.grupomm.dbm.entity.TipoAssinatura</beans:value>
+                <beans:value>br.com.grupomm.dbm.entity.Solicitacao</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -205,6 +202,18 @@
     <!--  -->
     
     <!--  -->
+    <beans:bean id="solicitacaoDAO" class="br.com.grupomm.dbm.dao.SolicitacaoDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="solicitacaoService" class="br.com.grupomm.dbm.service.SolicitacaoServiceImpl">
+        <beans:property name="solicitacaoDAO" ref="solicitacaoDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="solicitacao" class="br.com.grupomm.dbm.entity.Solicitacao">
+    </beans:bean>
+    <!--  -->
+    
+    <!--  -->
     <beans:bean id="tipoAssinaturaDAO" class="br.com.grupomm.dbm.dao.TipoAssinaturaDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
@@ -214,11 +223,13 @@
     
     <beans:bean id="tipoAssinatura" class="br.com.grupomm.dbm.entity.TipoAssinatura">
     </beans:bean>
+    
+    <beans:bean id="assinaturaBO" class="br.com.grupomm.dbm.bo.AssinaturaBO" />
     <!--  -->
     
     <!--  -->
     <beans:bean id="gerarCodigo" class="br.com.grupomm.dbm.utils.GerarCodigo">
     </beans:bean>
     <!--  -->
-    
+    <beans:bean id="pessoaBO" class="br.com.grupomm.dbm.bo.PessoaBO" />
 </beans:beans>

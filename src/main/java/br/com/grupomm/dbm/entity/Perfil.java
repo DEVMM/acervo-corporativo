@@ -23,6 +23,43 @@ public class Perfil implements AbstractEntity, Serializable {
 	
 	private static final long serialVersionUID = -3265716956539169169L;
 
+	@Id
+	@GeneratedValue
+	@Column(name="id_perfil")
+	private Long idPerfil;
+	private String descricao;
+	
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy ="perfis", cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
+
+	public Long getIdPerfil() {
+		return idPerfil;
+	}
+
+	public void setIdPerfil(Long idPerfil) {
+		this.idPerfil = idPerfil;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
+
+	public void setPessoas(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	@Override
 	public String toString() {
 		return "Perfil [idPerfil=" + idPerfil + ", descricao=" + descricao
@@ -67,42 +104,4 @@ public class Perfil implements AbstractEntity, Serializable {
 			return false;
 		return true;
 	}
-
-	@Id
-	@GeneratedValue
-	@Column(name="id_perfil")
-	private Long idPerfil;
-	private String descricao;
-	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy ="perfis", cascade = {CascadeType.REFRESH, CascadeType.MERGE})
-	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
-
-	public Long getIdPerfil() {
-		return idPerfil;
-	}
-
-	public void setIdPerfil(Long idPerfil) {
-		this.idPerfil = idPerfil;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public List<Pessoa> getPessoas() {
-		return pessoas;
-	}
-
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 }

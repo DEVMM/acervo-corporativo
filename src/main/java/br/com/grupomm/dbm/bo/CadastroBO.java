@@ -29,11 +29,12 @@ public class CadastroBO extends AutowiredServices {
 	}
 
 	public void salvarPessoaFisica(PessoaFisica pF) {
+		
 		try {
 			this.pessoaFisicaService.salvar(pF);
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLException e) {
-			this.excluirPessoa(pF.getPessoa());
+			this.excluirPessoa(pF);
 			e.printStackTrace();
 		}
 	}

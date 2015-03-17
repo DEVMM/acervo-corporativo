@@ -13,7 +13,7 @@
 		</h1>
 			<div class="content-cadastro">
 				<!-- MENU TOPO DE NAVEGAÃ‡ÃƒO -->
-				<form action="/GrupoMMDBM/dbm/cadastrar-usuario/salvar" name="cadastro" method="POST">
+				<form action="/GrupoMMDBM/assinatura/cadastrar-usuario/salvar" name="cadastro" method="POST">
 					<div class="column">
 						<div class="form-perfil form-profissional">
 							<h3>
@@ -378,7 +378,8 @@
 			            </div><!-- end column-right -->
 					<div style="clear: both;"></div>
 					<div class="btn-cadastro">
-						<input type="submit" class="btn-prosseguir" value="Finalizar"> </div>
+						<input type="submit" class="btn-prosseguir" value="Finalizar">
+					</div>
 					<!-- end btn-cadastro -->
 				</form>
 				<!-- Fim do Form -->

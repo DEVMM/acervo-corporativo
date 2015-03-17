@@ -24,7 +24,7 @@ public class Email implements AbstractEntity, Serializable {
 	@GeneratedValue
 	@Column(name="id_email")
 	private Long id;
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_pessoa")
 	private Pessoa pessoa;
 	private String email;
@@ -102,9 +102,4 @@ public class Email implements AbstractEntity, Serializable {
 		return true;
 	}
 	
-	@Override
-	public String toString() {
-		return "Email [id=" + id + ", pessoa=" + pessoa + ", email=" + email
-				+ ", principal=" + principal + "]";
-	}
 }

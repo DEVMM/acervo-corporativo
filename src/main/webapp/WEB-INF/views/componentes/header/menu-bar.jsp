@@ -6,6 +6,7 @@
         <h1>
             <a href="#" title="#"><img src="${myUrl}resources/images/logoGrupoMM-barra.png" alt="Grupo M&amp;M" height="24" width="104"></a>
         </h1>
+        
         <ul class="barra-menu">
             <li class="azul"><a href="http://www.meioemensagem.com.br" title="Meio &amp; Mensagem"><span>Meio &amp; Mensagem</span></a></li>
             <li class="rosa"><a href="http://www.proxxima.com.br" title="Proxxima"><span>ProXXIma</span></a></li>
@@ -18,8 +19,7 @@
             <li><a href="#" title=""><span class="none-border">fale conosco</span></a></li>
             <li><a class="uppercase" href="javascript:chamarAlert()" title="Inscreva-se"><span>Cadastre-se</span></a></li>
             <li><a class="uppercase account" href="#" title=""><span class="right">Login</span></a>
-            <li><a href="<c:url value="/j_spring_security_logout"/>">Sair <i class="entypo-logout right"></i></a></li>
-                <ul class="submenu" style="display: none;">
+            <ul class="submenu" style="display: none;">
                     <li>
                         <label>Login</label> 
                         <img src="${myUrl}resources/images/pic-up.png" />
@@ -48,6 +48,7 @@
                         <a href="javascript:alert_recupera_login()">Esqueci meu login</a>
                     </li>
                 </ul>
+            <li><a href="<c:url value="/j_spring_security_logout"/>">Sair <i class="entypo-logout right"></i></a></li>
        </ul>    
         </form>
 

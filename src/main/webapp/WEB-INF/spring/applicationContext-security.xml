@@ -7,10 +7,10 @@
                         
 	<http auto-config="true" use-expressions="true">
 		<access-denied-handler error-page="/publico/403" />
-		<intercept-url pattern="/dbm/**" access="hasRole('master')" />
+		<intercept-url pattern="/assinatura/**" access="hasRole('master')" />
 		<form-login 
 			login-page="/publico/login"
-			always-use-default-target="true" default-target-url="/dbm/dashboard"
+			always-use-default-target="true" default-target-url="/assinatura/dashboard"
 			username-parameter="codigo"
 			password-parameter="codigo"
 			authentication-failure-url="/publico/login/?login_error=1" />

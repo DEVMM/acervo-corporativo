@@ -216,7 +216,7 @@
 
 /*  Visualizar Assinaturas */
 
-.v-assinaturas {margin: 0 auto; width: 1000px; /*background: #efefef;*/ height: 1000px; position: relative;}
+.v-assinaturas {margin: 0 auto; width: 1000px; /*background: #efefef;*/position: relative;}
 .v-assinaturas h1 {color: #9a9b96; font-size:24px; font-weight: normal; font-family: flama-medium-webfont; padding: 25px 0 15px 15px; color: #0076bc;}
 .v-assinaturas h2, .v-assinaturas h3 { color: #000000; font-size: 16px!important; font-weight: normal!important; font-family: arial!important; padding: 0px 2px 15px 17px; width:191px; float: left; font-size: 13px!important; /* border: 1px solid; */}
 .txtPoup {color: #000000!important; font-size: 16px!important; font-weight: normal!important; font-family: arial!important; padding: 12px 2px 15px 18px!important; width: 361px!important; float: left!important; font-size: 13px!important; /* border: 1px solid; */}
@@ -472,7 +472,7 @@
 
 .form-perfil .input-box, .form-endereco .input-box, .form-profissional .input-box { margin-bottom:10px; float:left; margin-right: -1px; display: initial; min-width:455px;}
 .form-perfil .input-box label, .form-endereco .input-box label, .form-profissional .input-box label  { display:block; float:left; padding:0 0 0 0px; font-family:Flama-bold-italic, Arial, Helvetica, sans-serif; font-size:15px; line-height:16px; text-align:right; text-transform:lowercase; width:94px; color:#0076bc;}
-.form-perfil .input-box input[type='text'],.input-box input[type='password'],.input-box input[type="email"] , .input-box input[type="tel"] ,.input-box input[type="number"] , .form-endereco .input-box input[type='text'], .form-profissional .input-box input[type='text'], .form-endereco .input-box select,  .form-profissional .input-box select { background:#fff; border:1px solid #ccc; color:#7e807a; border-radius:30px; font-family:flama-basic, Arial, Helvetica, sans-serif; font-size:14px; margin-left:24px; padding: 8px 40px 8px 15px; /*text-transform:uppercase;*/ width:222px; }
+.form-perfil .input-box input[type='text'],.input-box input[type='password'],.input-box input[type="email"] , .input-box input[type="date"] ,.input-box input[type="number"] , .form-endereco .input-box input[type='text'], .form-profissional .input-box input[type='text'], .form-endereco .input-box select,  .form-profissional .input-box select { background:#fff; border:1px solid #ccc; color:#7e807a; border-radius:30px; font-family:flama-basic, Arial, Helvetica, sans-serif; font-size:14px; margin-left:24px; padding: 8px 40px 8px 15px; /*text-transform:uppercase;*/ width:222px; }
 .form-endereco .input-box select, .form-profissional .input-box select { color:#333; width:278px; background: url("../images/next-down.jpg") 240px 3px #fff no-repeat ; -webkit-appearance: none; -moz-appearance: none!important; appearance: none!important;}
 .selecNN {border: 1px solid #cbccc1; font-size: 12px; text-transform: uppercase; margin: 39px 0 0 -1px; color: #333; width: 172px; background: url("../images/next-down.jpg") 135px 3px #fff no-repeat; padding: 0px 0 0 10px; border-radius: 30px; height: 35px; -webkit-appearance: none; -moz-appearance: none!important; appearance: none!important;}
 .form-endereco .input-box input.cep { width:144px; }
@@ -669,9 +669,9 @@ div#box ul#contents li{display: inline-block; width: 351px; height: 353px; margi
 .localizarCep a { border-bottom: 3px solid #e6e7de; font-family:arial; font-size: 15px; color: #54554a;}
 .localizarCep a:hover {color:#000000;}
 .divsegM {/* overflow: hidden; */ height: 50px; width: 576px; /*border: 1px solid;*/}
-.checkboxVisu {display: inline-block; width: 147px; /*border: 1px solid;*/ float: left; margin:48px 0 0 0;}
+.checkboxVisu {display: inline-block}r
 .checkboxVisu small {font-family: arial; font-size: 14px;}
-.divAssinatura input[type="image"] {/* border: 1px solid red; */ position: absolute; top: 158px; left: 324px;}
+.divAssinatura input[type="image"] {/* border: 1px solid red; */ position: absolute; top: 147px; left: 324px;}
 
 .alterarMM a {color:#000000; font-family: arial; font-size: 12px; text-decoration: underline!important;}
 

@@ -2,7 +2,6 @@
 			var cep = document.getElementById('campo-cep').value;
 			cep = cep.replace(/\D/g, "");
 			document.getElementById('loadingCEP').style.display = "block";
-			loadingCEP
 			var methodURL = "http://cep.correiocontrol.com.br/" + cep + ".js";
 			s = document.createElement('script')
 			s.setAttribute('charset', 'utf-8')
@@ -329,19 +328,26 @@
 		}
 		
 		function validarCNPJ() {
-			var methodURL= "validarCNPJ"
+			var methodURL= "../validarCNPJ"
 			var cnpj = document.getElementById("cnpj").value;
+			cnpj = cnpj.replace(/\./g,'');
+			cnpj = cnpj.replace(/-/g,'');
+			cnpj = cnpj.replace(/\//g,'');
+			
+			alert(cnpj)
 			$.ajax({
 				type : "POST",
 				url : methodURL,
 				data : "cnpj="+cnpj,
 				success : function(response) {
-					if (response == "true") {
-						alert("CNPJ Já esta cadastrado!!!");
+					if (response == "false") {
+						document.getElementById("cnpj").className = "borda-validacao";
+					} else {
+						document.getElementById("cnpj").className = "";
 					}
 				},
 				error : function(e) {
-					alert("Falha ao carregar os Dados");
+					console.log("Falha ao carregar os Dados");
 				}
-			});
+			});	
 		}

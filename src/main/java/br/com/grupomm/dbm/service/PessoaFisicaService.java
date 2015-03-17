@@ -1,6 +1,7 @@
 package br.com.grupomm.dbm.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -15,4 +16,6 @@ public interface PessoaFisicaService {
 	public void merge(PessoaFisica pF) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
 	public void excluir(PessoaFisica pF) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
 	public PessoaFisica getPessoaFisicaByCPF(String cpf) throws SQLException;
+	public PessoaFisica getPessoaFisicaByCodigo(String codigo) throws SQLException;
+	public List<PessoaFisica> listarPessoas() throws SQLException;
 }

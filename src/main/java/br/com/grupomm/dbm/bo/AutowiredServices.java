@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import br.com.grupomm.dbm.service.AreaDeAtuacaoService;
+import br.com.grupomm.dbm.service.AssinaturaService;
 import br.com.grupomm.dbm.service.EmailService;
 import br.com.grupomm.dbm.service.EnderecoService;
 import br.com.grupomm.dbm.service.NivelHierarquicoService;
@@ -12,7 +13,9 @@ import br.com.grupomm.dbm.service.PessoaJuridicaService;
 import br.com.grupomm.dbm.service.PessoaService;
 import br.com.grupomm.dbm.service.PorteService;
 import br.com.grupomm.dbm.service.RamoDeAtividadeService;
+import br.com.grupomm.dbm.service.SolicitacaoService;
 import br.com.grupomm.dbm.service.TelefoneService;
+import br.com.grupomm.dbm.service.TipoAssinaturaService;
 
 public abstract class AutowiredServices {
 	
@@ -21,6 +24,13 @@ public abstract class AutowiredServices {
 	@Qualifier(value="pessoaService")
 	public void setPessoaService(PessoaService ps){
 		this.pessoaService = ps;
+	}
+	
+	protected AssinaturaService assinaturaService;
+	@Autowired(required=true)
+	@Qualifier(value="assinaturaService")
+	public void setAssinaturaService(AssinaturaService as){
+		this.assinaturaService = as;
 	}
 	
 	protected PessoaFisicaService pessoaFisicaService;
@@ -84,5 +94,19 @@ public abstract class AutowiredServices {
 	@Qualifier(value="ramoDeAtividadeService")
 	public void setRamoDeAtividadeService(RamoDeAtividadeService rs){
 		this.ramoDeAtividadeService = rs;
+	}
+	
+	protected SolicitacaoService solicitacaoService;
+	@Autowired(required=true)
+	@Qualifier(value="solicitacaoService")
+	public void setSolicitacaoService(SolicitacaoService ss){
+		this.solicitacaoService = ss;
+	}
+	
+	protected TipoAssinaturaService tipoAssinaturaService;
+	@Autowired(required=true)
+	@Qualifier(value="tipoAssinaturaService")
+	public void setSolicitacaoService(TipoAssinaturaService tipoAssinaturaService){
+		this.tipoAssinaturaService = tipoAssinaturaService;
 	}
 }

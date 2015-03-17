@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.grupomm.dbm.dao.AssinaturaDAO;
 import br.com.grupomm.dbm.entity.Assinatura;
+import br.com.grupomm.dbm.entity.Pessoa;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
@@ -59,6 +60,11 @@ public class AssinaturaServiceImpl implements AssinaturaService {
 	@Override
 	public Assinatura AssinaturaByID(int id) throws SQLException {
 		return this.assinaturaDAO.AssinaturaByID(id);
+	}
+	
+	@Override
+	public Assinatura getAssinaturaByPessoa(Pessoa pessoa) throws SQLException {
+		return this.assinaturaDAO.getAssinaturaByPessoa(pessoa);
 	}
 
 }

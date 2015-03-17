@@ -7,6 +7,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import br.com.grupomm.dbm.entity.Assinatura;
+import br.com.grupomm.dbm.entity.Pessoa;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
@@ -18,5 +19,6 @@ public interface AssinaturaService {
 	public void excluir(Assinatura a) throws DataIntegrityViolationException, ConstraintViolationException, SQLException, MySQLIntegrityConstraintViolationException;
 	public List<Assinatura> listarAssinatura() throws SQLException;
 	public Assinatura AssinaturaByID(int id) throws SQLException;
+	public Assinatura getAssinaturaByPessoa(Pessoa pessoa) throws SQLException;
 
 }

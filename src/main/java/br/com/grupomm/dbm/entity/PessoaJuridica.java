@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -16,15 +16,11 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="pessoa_juridica")
+@DiscriminatorValue("pessoa_juridica")
 @Component
-public class PessoaJuridica implements AbstractEntity, Serializable {
+public class PessoaJuridica extends Pessoa implements AbstractEntity, Serializable {
 
 	private static final long serialVersionUID = -3348468570357598711L;
-	
-	@Id
-	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-	@JoinColumn(name="id_pessoa")
-	private Pessoa pessoa;
 	
 	private String CNPJ;
 	@Column(name="inscricao_estadual")
@@ -34,29 +30,21 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 	@Column(name="razao_social")
 	private String razaoSocial;
 	
-	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST})
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_porte")
 	private Porte porte;
 	
-	@ManyToOne (fetch = FetchType.LAZY, cascade={CascadeType.PERSIST})
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="id_ramo")
 	private RamoDeAtividade ramo;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name="id_endereco")
 	private Endereco enderecoComercial;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_responsavel")
 	private PessoaFisica responsavel;
-
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
 
 	public String getCNPJ() {
 		return CNPJ;
@@ -141,7 +129,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 						.hashCode());
 		result = prime * result
 				+ ((nomeFantasia == null) ? 0 : nomeFantasia.hashCode());
-		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		result = prime * result + ((porte == null) ? 0 : porte.hashCode());
 		result = prime * result + ((ramo == null) ? 0 : ramo.hashCode());
 		result = prime * result
@@ -180,11 +167,6 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 				return false;
 		} else if (!nomeFantasia.equals(other.nomeFantasia))
 			return false;
-		if (pessoa == null) {
-			if (other.pessoa != null)
-				return false;
-		} else if (!pessoa.equals(other.pessoa))
-			return false;
 		if (porte == null) {
 			if (other.porte != null)
 				return false;
@@ -208,14 +190,4 @@ public class PessoaJuridica implements AbstractEntity, Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "PessoaJuridica [pessoa=" + pessoa + ", CNPJ=" + CNPJ
-				+ ", inscricaoEstadual=" + inscricaoEstadual
-				+ ", nomeFantasia=" + nomeFantasia + ", razaoSocial="
-				+ razaoSocial + ", porte=" + porte + ", ramo=" + ramo
-				+ ", enderecoComercial=" + enderecoComercial + ", responsavel="
-				+ responsavel + "]";
-	}
-	
 }

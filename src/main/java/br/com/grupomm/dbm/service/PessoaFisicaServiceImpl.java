@@ -1,6 +1,7 @@
 package br.com.grupomm.dbm.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -45,6 +46,17 @@ public class PessoaFisicaServiceImpl implements PessoaFisicaService {
 	@Override
 	public PessoaFisica getPessoaFisicaByCPF(String cpf) throws SQLException {
 		return this.pessoaFisicaDAO.getPessoaFisicaByCPF(cpf);
+	}
+
+	@Override
+	public PessoaFisica getPessoaFisicaByCodigo(String codigo)
+			throws SQLException {
+		return this.pessoaFisicaDAO.getPessoaFisicaByCodigo(codigo);
+	}
+
+	@Override
+	public List<PessoaFisica> listarPessoas() throws SQLException {
+		return this.pessoaFisicaDAO.listarPessoas();
 	}
 
 }

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -20,11 +22,11 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="pessoa")
 public class Pessoa implements AbstractEntity, Serializable {
 
-	private static final long serialVersionUID = -4436364834267060433L;
-	 
+	private static final long serialVersionUID = -708069348587311074L;
 	@Id
 	@GeneratedValue
 	@Column(name = "id_pessoa")
@@ -32,26 +34,24 @@ public class Pessoa implements AbstractEntity, Serializable {
 	private String codigo;
 	private Boolean ativo;
 	
-	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToMany(mappedBy="pessoa", fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Email> emails = new ArrayList<>();
 	
-	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToMany(mappedBy="pessoa", fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Telefone> telefones = new ArrayList<>();
 	
-	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@OneToMany(mappedBy="pessoa", fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Assinatura> assinaturas = new ArrayList<>();
 	
-	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-	private List<PessoaFisica> pessoasFisicas = new ArrayList<>();
-	
-	@OneToMany(mappedBy="pessoa", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-	private List<PessoaJuridica> pessoasJuridicas = new ArrayList<>();
-	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
 	@JoinTable(name="perfil_pessoa", 
 		joinColumns = { @JoinColumn(name = "id_pessoa", nullable = false, updatable = false) }, 
 		inverseJoinColumns = { @JoinColumn(name = "id_perfil", nullable = false, updatable = false) })  
 	private List<Perfil> perfis = new ArrayList<Perfil>();
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public Long getId() {
 		return id;
@@ -69,7 +69,7 @@ public class Pessoa implements AbstractEntity, Serializable {
 		this.codigo = codigo;
 	}
 
-	public Boolean isAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 
@@ -92,7 +92,7 @@ public class Pessoa implements AbstractEntity, Serializable {
 	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
 	}
-
+	
 	public List<Assinatura> getAssinaturas() {
 		return assinaturas;
 	}
@@ -101,32 +101,12 @@ public class Pessoa implements AbstractEntity, Serializable {
 		this.assinaturas = assinaturas;
 	}
 
-	public List<PessoaFisica> getPessoasFisicas() {
-		return pessoasFisicas;
-	}
-
-	public void setPessoasFisicas(List<PessoaFisica> pessoasFisicas) {
-		this.pessoasFisicas = pessoasFisicas;
-	}
-
-	public List<PessoaJuridica> getPessoasJuridicas() {
-		return pessoasJuridicas;
-	}
-
-	public void setPessoasJuridicas(List<PessoaJuridica> pessoasJuridicas) {
-		this.pessoasJuridicas = pessoasJuridicas;
-	}
-
 	public List<Perfil> getPerfis() {
 		return perfis;
 	}
 
 	public void setPerfis(List<Perfil> perfis) {
 		this.perfis = perfis;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
@@ -140,11 +120,6 @@ public class Pessoa implements AbstractEntity, Serializable {
 		result = prime * result + ((emails == null) ? 0 : emails.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((perfis == null) ? 0 : perfis.hashCode());
-		result = prime * result
-				+ ((pessoasFisicas == null) ? 0 : pessoasFisicas.hashCode());
-		result = prime
-				* result
-				+ ((pessoasJuridicas == null) ? 0 : pessoasJuridicas.hashCode());
 		result = prime * result
 				+ ((telefones == null) ? 0 : telefones.hashCode());
 		return result;
@@ -189,31 +164,12 @@ public class Pessoa implements AbstractEntity, Serializable {
 				return false;
 		} else if (!perfis.equals(other.perfis))
 			return false;
-		if (pessoasFisicas == null) {
-			if (other.pessoasFisicas != null)
-				return false;
-		} else if (!pessoasFisicas.equals(other.pessoasFisicas))
-			return false;
-		if (pessoasJuridicas == null) {
-			if (other.pessoasJuridicas != null)
-				return false;
-		} else if (!pessoasJuridicas.equals(other.pessoasJuridicas))
-			return false;
 		if (telefones == null) {
 			if (other.telefones != null)
 				return false;
 		} else if (!telefones.equals(other.telefones))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", codigo=" + codigo + ", ativo=" + ativo
-				+ ", emails=" + emails + ", telefones=" + telefones
-				+ ", assinaturas=" + assinaturas + ", pessoasFisicas="
-				+ pessoasFisicas + ", pessoasJuridicas=" + pessoasJuridicas
-				+ ", perfis=" + perfis + "]";
 	}
 
 }
